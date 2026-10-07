@@ -17,7 +17,7 @@
 
   <!-- ══════════ HERO ─ 滿版動態 banner ══════════ -->
   <section class="stage stage--mid">
-    <div class="stage__art"><div class="art" data-art="storage" data-parallax="0.1"></div></div>
+    <div class="stage__art"><img class="photo photo--para" src="assets/img/photo/rg-01.jpg" alt="成排白色儲能櫃與後方的電力線路" data-parallax="0.1"></div>
     <div class="stage__scrim stage__scrim--left"></div>
     <div class="stage__inner" style="padding-block:calc(var(--header-h) + 72px) 76px">
       <div class="wrap">
@@ -63,22 +63,50 @@
           <h2 class="d2">服務內容</h2>
         </div>
       </div>
-      <div class="ledger" data-stagger="80">
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">01</span><h3 class="ledger__t">大型儲能系統 BESS</h3></div>
-          <p class="ledger__v">採用 LFP 磷酸鋰鐵電池，完整涵蓋電池櫃、PCS、升壓變壓器、消防與 EMS 的系統整合與建置。</p>
+      <div class="gal" data-gal data-reveal>
+        <div class="gal__view">
+          <ul class="gal__track">
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/rg-06.jpg" alt="技師檢查儲能電池芯模組" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">01</span>
+                <h3 class="gal__t">大型儲能系統 BESS</h3>
+                <p class="gal__d">採用 LFP 磷酸鋰鐵電池，完整涵蓋電池櫃、PCS、升壓變壓器、消防與 EMS 的系統整合與建置。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/rg-04.jpg" alt="夕陽下的輸電鐵塔與電線" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">02</span>
+                <h3 class="gal__t">電力交易輔助服務</h3>
+                <p class="gal__d">協助取得合格交易者資格並參與調頻備轉、即時備轉與補充備轉，依市場價格動態調整投標策略。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/dt-05.jpg" alt="成排的數位電錶顯示用電資訊" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">03</span>
+                <h3 class="gal__t">需量反應與契約容量管理</h3>
+                <p class="gal__d">分析廠區負載曲線，以儲能削峰填谷降低契約容量與基本電費，同時保留參與需量反應的空間。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/rg-05.jpg" alt="變電站內的大型電力變壓器" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">04</span>
+                <h3 class="gal__t">微電網與虛擬電廠</h3>
+                <p class="gal__d">整合區域內分散的光電、儲能與可控負載，建立統一調度的虛擬電廠，提升供電韌性。</p>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">02</span><h3 class="ledger__t">電力交易輔助服務</h3></div>
-          <p class="ledger__v">協助取得合格交易者資格並參與調頻備轉、即時備轉與補充備轉，依市場價格動態調整投標策略。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">03</span><h3 class="ledger__t">需量反應與契約容量管理</h3></div>
-          <p class="ledger__v">分析廠區負載曲線，以儲能削峰填谷降低契約容量與基本電費，同時保留參與需量反應的空間。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">04</span><h3 class="ledger__t">微電網與虛擬電廠</h3></div>
-          <p class="ledger__v">整合區域內分散的光電、儲能與可控負載，建立統一調度的虛擬電廠，提升供電韌性。</p>
+        <div class="gal__bar">
+          <div class="gal__dots"></div>
+          <div class="gal__nav">
+            <span class="gal__count"></span>
+            <button class="gal__btn" type="button" data-gal-prev aria-label="上一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button class="gal__btn" type="button" data-gal-next aria-label="下一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
         </div>
       </div>
     </div>
@@ -86,7 +114,7 @@
 
   <!-- ══════════ 規格 ─ 滿版背景 + 規格表 ══════════ -->
   <section class="stage stage--mid">
-    <div class="stage__art"><div class="art" data-art="grid"></div></div>
+    <div class="stage__art"><img class="photo" src="assets/img/photo/rg-02.jpg" alt="密集交錯的高壓輸配電線路" loading="lazy"></div>
     <div class="stage__scrim stage__scrim--left"></div>
     <div class="stage__inner" style="padding-block:clamp(72px,8vw,120px)">
       <div class="wrap">
@@ -172,72 +200,73 @@
   </section>
 
   <!-- ══════════ 適用對象 ─ 滿版質感帶 ══════════ -->
-  <section class="stage stage--short">
-    <div class="stage__art"><div class="art" data-art="city"></div></div>
-    <div class="stage__scrim stage__scrim--right"></div>
-    <div class="stage__inner" style="padding-block:clamp(60px,7vw,100px)">
-      <div class="wrap">
-        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(26px,4vw,72px);align-items:center">
-          <div data-reveal="left">
-            <span class="eyebrow eyebrow--light">Good Fit</span>
-            <h2 class="h1" style="color:#fff;margin-top:16px">這項服務<br>適合這些對象</h2>
-          </div>
-          <div data-reveal="right">
-            <div class="chapter__tags" style="margin-top:0">
-              <span class="chapter__tag">工業區與科學園區</span>
-              <span class="chapter__tag">高用電量製造廠</span>
-              <span class="chapter__tag">既有光電案場加裝儲能</span>
-              <span class="chapter__tag">台電饋線容量充裕之土地</span>
-              <span class="chapter__tag">需提升供電韌性的關鍵設施</span>
-              <span class="chapter__tag">社區型微電網示範場域</span>
-            </div>
-            <p class="small" style="margin-top:24px;color:rgba(255,255,255,.65)">
-              不確定自己的條件適不適合？把現況資料給我們，
-              <a href="contact.html" style="color:var(--t-300);font-weight:600">一次免費評估</a>就能得到答案。
-            </p>
-          </div>
+  <section class="section section--wash">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__text" data-reveal>
+          <span class="eyebrow">Good Fit</span>
+          <h2 class="d2">這項服務適合這些對象</h2>
         </div>
       </div>
+      <ul class="aud" data-stagger="70">
+        <li class="aud__i"><img src="assets/img/photo/ex-tower.jpg" alt="園區內成群的商辦大樓" loading="lazy"><span class="aud__t">工業區與科學園區</span></li>
+        <li class="aud__i"><img src="assets/img/photo/ex-cleanroom.jpg" alt="高用電量的工廠生產線" loading="lazy"><span class="aud__t">高用電量製造廠</span></li>
+        <li class="aud__i"><img src="assets/img/photo/pv-07.jpg" alt="既有太陽能電廠的空拍全景" loading="lazy"><span class="aud__t">既有光電案場加裝儲能</span></li>
+        <li class="aud__i"><img src="assets/img/photo/ex-land.jpg" alt="開闊的空地草原" loading="lazy"><span class="aud__t">台電饋線容量充裕之土地</span></li>
+        <li class="aud__i"><img src="assets/img/photo/ex-hospital.jpg" alt="大型白色醫療院所建築" loading="lazy"><span class="aud__t">需提升供電韌性的關鍵設施</span></li>
+        <li class="aud__i"><img src="assets/img/photo/td-05.jpg" alt="城市高樓旁的綠地公園" loading="lazy"><span class="aud__t">社區型微電網示範場域</span></li>
+      </ul>
+      <p class="small" data-reveal style="margin-top:26px;color:var(--muted)">
+        不確定自己的條件適不適合？把現況資料給我們，
+        <a href="contact.html" style="color:var(--t-600);font-weight:600">一次免費評估</a>就能得到答案。
+      </p>
     </div>
   </section>
 
   <!-- ══════════ 其他服務 ─ 滑過切換背景 ══════════ -->
-  <section class="section index" data-index style="padding-block:clamp(64px,7vw,110px)">
-    <div class="index__media">
-      <div class="art" data-art="solar" data-index-media="service-pv"></div>
-      <div class="art" data-art="om" data-index-media="service-om"></div>
-      <div class="art" data-art="data" data-index-media="service-data"></div>
-      <div class="art" data-art="trade" data-index-media="service-trading"></div>
-    </div>
-    <div class="index__scrim"></div>
-    <div class="wrap index__list" style="position:relative;z-index:2">
-      <div class="sec-head" data-reveal>
-        <div class="sec-head__text">
-          <span class="eyebrow eyebrow--light">More</span>
-          <h2 class="h1" style="color:#fff">其他服務項目</h2>
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__text" data-reveal>
+          <span class="eyebrow">More</span>
+          <h2 class="d2">其他服務項目</h2>
         </div>
-        <a class="link-arrow" href="services.html" style="color:var(--t-300)">全部服務<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="link-arrow" href="services.html">全部服務<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <a class="index__row" data-index-item="service-pv" href="service-pv.html">
-        <span class="index__n">01</span><h3 class="index__t">光電系統工程</h3>
-        <p class="index__d">從屋頂、地面到水面，把每一塊可用的空間，變成能穩定運轉二十年的發電資⋯</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <a class="index__row" data-index-item="service-om" href="service-om.html">
-        <span class="index__n">02</span><h3 class="index__t">光電案場維運</h3>
-        <p class="index__d">案場的收益不是完工那天決定的，是之後七千個日子裡，每一天決定的。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <a class="index__row" data-index-item="service-data" href="service-data.html">
-        <span class="index__n">04</span><h3 class="index__t">能源資訊服務</h3>
-        <p class="index__d">把分散在各處電錶裡的數字，變成一張能下決策的圖。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <a class="index__row" data-index-item="service-trading" href="service-trading.html">
-        <span class="index__n">05</span><h3 class="index__t">綠電交易服務</h3>
-        <p class="index__d">綠電不缺買家，缺的是把需求、供給與法規條件兜在一起的人。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+      <div class="svc" data-stagger="80">
+        <a class="svc__c" href="service-pv.html">
+          <div class="svc__m"><img src="assets/img/photo/pv-02.jpg" alt="成排地面型太陽能模組與遠方山稜" loading="lazy"><span class="svc__n">01</span></div>
+          <div class="svc__b">
+            <h3 class="svc__t">光電系統工程</h3>
+            <p class="svc__d">從屋頂、地面到水面，把每一塊可用的空間，變成能穩定運轉二十年的發電資⋯</p>
+            <span class="svc__go">了解更多<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="svc__c" href="service-om.html">
+          <div class="svc__m"><img src="assets/img/photo/om-02.jpg" alt="技師在屋頂以筆電測試太陽能系統" loading="lazy"><span class="svc__n">02</span></div>
+          <div class="svc__b">
+            <h3 class="svc__t">光電案場維運</h3>
+            <p class="svc__d">案場的收益不是完工那天決定的，是之後七千個日子裡，每一天決定的。</p>
+            <span class="svc__go">了解更多<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="svc__c" href="service-data.html">
+          <div class="svc__m"><img src="assets/img/photo/dt-01.jpg" alt="監控中心內多面即時資訊螢幕" loading="lazy"><span class="svc__n">04</span></div>
+          <div class="svc__b">
+            <h3 class="svc__t">能源資訊服務</h3>
+            <p class="svc__d">把分散在各處電錶裡的數字，變成一張能下決策的圖。</p>
+            <span class="svc__go">了解更多<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="svc__c" href="service-trading.html">
+          <div class="svc__m"><img src="assets/img/photo/td-02.jpg" alt="商務人士於會議中握手達成合作" loading="lazy"><span class="svc__n">05</span></div>
+          <div class="svc__b">
+            <h3 class="svc__t">綠電交易服務</h3>
+            <p class="svc__d">綠電不缺買家，缺的是把需求、供給與法規條件兜在一起的人。</p>
+            <span class="svc__go">了解更多<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 

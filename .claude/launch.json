@@ -5,8 +5,15 @@
     {
       "name": "nuleiv-site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["/Users/jcchen/Downloads/Nuleivpower-NEW.com/.claude/serve.py"],
-      "port": 4178
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "/Users/jcchen/Downloads/Nuleivpower-NEW.com"
+      ],
+      "port": 4188
     }
   ]
 }

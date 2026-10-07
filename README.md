@@ -77,6 +77,11 @@ assets/
 | `.bleed-split` | 影像切齊畫面左或右緣的不對稱分割 |
 | `.tile` | 無外框的靜態圖文項目（最新消息） |
 | `.rail` | 右側章節進度指示器（服務項目頁） |
+| `.gal` | 圖片輪播：左右鍵／點點／觸控滑動／鍵盤方向鍵，自動播放滑入即停（五個服務子頁的「服務內容」） |
+| `.aud` | 「這項服務適合這些對象」的圖片卡格 |
+| `.svc` | 「其他服務項目」的服務卡片格（預設 4 欄，`.svc--3` 為 3 欄） |
+
+`.gal` 容器加 `data-gal-auto="0"` 可關閉自動播放，預設 6 秒換一張。
 
 深色滿版 banner 的頁面在 `<body>` 加 `data-header="over"`，頁首在捲動前會轉為透明、logo 換成白色版本。
 
@@ -119,26 +124,37 @@ assets/
 
 ## 關於圖片
 
-目前所有情境圖都是 **用程式產生的 SVG**（`assets/js/art.js`），有日出光束、多層山稜線、
-大氣霾、流雲、飛鳥與玻璃反光等層次。共 11 種場景：
-`solar` `aerial` `dusk` `macro` `om` `storage` `grid` `data` `leaf` `city` `trade` `light`。
+全站情境圖已改為 **實拍照片**，共 58 張，放在 `assets/img/photo/`。
+來源為 Unsplash（可免費商用），攝影者與原始連結列在 `assets/img/photo/CREDITS.md`。
 
-檔案完全自包含、離線可看、不會有破圖，也方便先確認版型。
+檔名前綴即用途：
 
-之後要換成實際攝影照片時，把頁面裡的：
+| 前綴 | 用途 |
+|---|---|
+| `hero-` | 滿版主視覺 banner |
+| `pv-` | 光電系統工程 |
+| `om-` | 光電案場維運 |
+| `rg-` | 區域能源整合 |
+| `dt-` | 能源資訊服務 |
+| `td-` | 綠電交易服務 |
+| `ab-` | 關於立德新能源 |
+| `su-` | 永續經營 |
+| `ex-` | 「適用對象」情境圖（廠房、溫室、商辦、港口……） |
+
+**要換成立德新能源自己的案場照**：直接以同檔名覆蓋即可，版型不用動。
+建議長邊 1600px、JPG、單檔 300KB 以內。
+
+HTML 裡的寫法：
 
 ```html
-<div class="art" data-art="solar"></div>
+<!-- 滿版背景（stage / bleed-split / tile） -->
+<img class="photo" src="assets/img/photo/pv-07.jpg" alt="說明文字" loading="lazy">
+
+<!-- 有視差捲動的 hero，額外加 photo--para -->
+<img class="photo photo--para" src="assets/img/photo/hero-01.jpg" alt="說明文字" data-parallax="0.1">
 ```
 
-換成：
-
-```html
-<img src="assets/img/你的照片.jpg" alt="說明文字"
-     style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-```
-
-即可，外層的圓角、陰影與遮罩都會沿用。
+`.photo` 已處理 `object-fit:cover` 與滿版定位，外層的圓角、陰影與遮罩都會沿用。
 
 ---
 
