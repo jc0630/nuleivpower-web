@@ -131,6 +131,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,88px);align-items:center}
 .split--7-5{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .split--5-7{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.split--top{align-items:start}
 .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:clamp(40px,4.5vw,72px)}
 .sec-head__text{max-width:880px}
 .sec-head__text>*+*{margin-top:16px}
