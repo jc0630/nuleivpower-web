@@ -54,31 +54,63 @@
     </div>
   </section>
 
-  <!-- ══════════ 服務內容 ─ 編號清單，不用卡片 ══════════ -->
+  <!-- ══════════ 服務內容 ─ 左清單 + 右示意圖輪播 ══════════ -->
   <section class="section">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-head__text" data-reveal>
+      <div class="gal gal--menu" data-gal data-reveal>
+        <div class="gal__side">
           <span class="eyebrow">What We Do</span>
-          <h2 class="d2">服務內容</h2>
+          <h2 class="d2" style="margin-top:14px">服務內容</h2>
+          <ul class="gal__menu">
+            <li><button class="gal__item" type="button" data-gal-go><span>邊界與方法學設定</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+            <li><button class="gal__item" type="button" data-gal-go><span>活動數據蒐集</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+            <li><button class="gal__item" type="button" data-gal-go><span>排放量計算</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+            <li><button class="gal__item" type="button" data-gal-go><span>查證輔導</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          </ul>
         </div>
-      </div>
-      <div class="ledger" data-stagger="80">
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">01</span><h3 class="ledger__t">邊界與方法學設定</h3></div>
-          <p class="ledger__v">確認組織邊界（營運控制權／股權比例）與營運邊界，界定納入的據點、排放源與範疇三類別。</p>
+        <div class="gal__view">
+          <ul class="gal__track">
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/planning.jpg" alt="兩位專業人員在桌面城市模型前討論規劃" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">01</span>
+                <h3 class="gal__t">邊界與方法學設定</h3>
+                <p class="gal__d">確認組織邊界（營運控制權／股權比例）與營運邊界，界定納入的據點、排放源與範疇三類別。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/switchboard.jpg" alt="電氣技師以平板檢查配電盤迴路狀態" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">02</span>
+                <h3 class="gal__t">活動數據蒐集</h3>
+                <p class="gal__d">盤點既有資料來源與缺口，建立資料蒐集表單與責任分工，必要時建議補裝分錶或計量設備。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/city-tower.jpg" alt="仰望綠樹與成群的玻璃帷幕商辦大樓" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">03</span>
+                <h3 class="gal__t">排放量計算</h3>
+                <p class="gal__d">套用環境部公告係數與國際資料庫完成計算，並進行不確定性評估與年度間一致性檢核。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/green-building.jpg" alt="大量植栽與自然採光的綠建築室內空間" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">04</span>
+                <h3 class="gal__t">查證輔導</h3>
+                <p class="gal__d">協助準備查證所需文件與佐證，陪同查證會議並處理查證員開立之不符合事項。</p>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">02</span><h3 class="ledger__t">活動數據蒐集</h3></div>
-          <p class="ledger__v">盤點既有資料來源與缺口，建立資料蒐集表單與責任分工，必要時建議補裝分錶或計量設備。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">03</span><h3 class="ledger__t">排放量計算</h3></div>
-          <p class="ledger__v">套用環境部公告係數與國際資料庫完成計算，並進行不確定性評估與年度間一致性檢核。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">04</span><h3 class="ledger__t">查證輔導</h3></div>
-          <p class="ledger__v">協助準備查證所需文件與佐證，陪同查證會議並處理查證員開立之不符合事項。</p>
+        <div class="gal__bar">
+          <div class="gal__dots"></div>
+          <div class="gal__nav">
+            <span class="gal__count"></span>
+            <button class="gal__btn" type="button" data-gal-prev aria-label="上一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button class="gal__btn" type="button" data-gal-next aria-label="下一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
         </div>
       </div>
     </div>

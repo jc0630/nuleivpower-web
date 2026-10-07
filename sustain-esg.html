@@ -54,31 +54,63 @@
     </div>
   </section>
 
-  <!-- ══════════ 服務內容 ─ 編號清單，不用卡片 ══════════ -->
+  <!-- ══════════ 服務內容 ─ 左清單 + 右示意圖輪播 ══════════ -->
   <section class="section">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-head__text" data-reveal>
+      <div class="gal gal--menu" data-gal data-reveal>
+        <div class="gal__side">
           <span class="eyebrow">What We Do</span>
-          <h2 class="d2">服務內容</h2>
+          <h2 class="d2" style="margin-top:14px">服務內容</h2>
+          <ul class="gal__menu">
+            <li><button class="gal__item" type="button" data-gal-go><span>重大性議題鑑別</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+            <li><button class="gal__item" type="button" data-gal-go><span>永續報告書編製</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+            <li><button class="gal__item" type="button" data-gal-go><span>TCFD 氣候揭露</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+            <li><button class="gal__item" type="button" data-gal-go><span>SBTi 減量目標</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></li>
+          </ul>
         </div>
-      </div>
-      <div class="ledger" data-stagger="80">
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">01</span><h3 class="ledger__t">重大性議題鑑別</h3></div>
-          <p class="ledger__v">盤點利害關係人、執行議題問卷與衝擊評估，產出符合雙重重大性原則的議題矩陣。</p>
+        <div class="gal__view">
+          <ul class="gal__track">
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/planning.jpg" alt="兩位專業人員在桌面城市模型前討論規劃" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">01</span>
+                <h3 class="gal__t">重大性議題鑑別</h3>
+                <p class="gal__d">盤點利害關係人、執行議題問卷與衝擊評估，產出符合雙重重大性原則的議題矩陣。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/green-building.jpg" alt="大量植栽與自然採光的綠建築室內空間" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">02</span>
+                <h3 class="gal__t">永續報告書編製</h3>
+                <p class="gal__d">依 GRI 準則建立揭露架構，協助各單位撰寫內容並進行一致性與正確性查核。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/wind-farm.jpg" alt="山稜線上成排運轉中的風力發電機" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">03</span>
+                <h3 class="gal__t">TCFD 氣候揭露</h3>
+                <p class="gal__d">進行氣候情境分析，辨識實體風險與轉型風險，並量化對財務的潛在影響。</p>
+              </div>
+            </li>
+            <li class="gal__slide">
+              <figure class="gal__fig"><img src="assets/img/photo/city-tower.jpg" alt="仰望綠樹與成群的玻璃帷幕商辦大樓" loading="lazy"></figure>
+              <div class="gal__cap">
+                <span class="gal__n">04</span>
+                <h3 class="gal__t">SBTi 減量目標</h3>
+                <p class="gal__d">依科學基礎方法學設定範疇一、二、三減量目標，並規劃可執行的減量路徑。</p>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">02</span><h3 class="ledger__t">永續報告書編製</h3></div>
-          <p class="ledger__v">依 GRI 準則建立揭露架構，協助各單位撰寫內容並進行一致性與正確性查核。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">03</span><h3 class="ledger__t">TCFD 氣候揭露</h3></div>
-          <p class="ledger__v">進行氣候情境分析，辨識實體風險與轉型風險，並量化對財務的潛在影響。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">04</span><h3 class="ledger__t">SBTi 減量目標</h3></div>
-          <p class="ledger__v">依科學基礎方法學設定範疇一、二、三減量目標，並規劃可執行的減量路徑。</p>
+        <div class="gal__bar">
+          <div class="gal__dots"></div>
+          <div class="gal__nav">
+            <span class="gal__count"></span>
+            <button class="gal__btn" type="button" data-gal-prev aria-label="上一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+            <button class="gal__btn" type="button" data-gal-next aria-label="下一張"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
         </div>
       </div>
     </div>
