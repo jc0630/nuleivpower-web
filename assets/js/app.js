@@ -353,6 +353,12 @@
       return b;
     });
 
+    /* 左側服務項目：點擊跳到對應圖片 */
+    var items = Array.prototype.slice.call(gal.querySelectorAll('[data-gal-go]'));
+    items.forEach(function (b, n) {
+      b.addEventListener('click', function () { go(n); stop(); });
+    });
+
     function go(n) {
       i = (n + slides.length) % slides.length;
       track.style.transform = 'translate3d(' + (-i * 100) + '%,0,0)';
@@ -361,6 +367,9 @@
       });
       dots.forEach(function (d, k) {
         if (d) d.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
+      items.forEach(function (b, k) {
+        b.setAttribute('aria-current', k === i ? 'true' : 'false');
       });
       if (countEl) {
         countEl.textContent = ('0' + (i + 1)).slice(-2) + ' / ' +
