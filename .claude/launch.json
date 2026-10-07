@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "autoPort": true,
+  "configurations": [
+    {
+      "name": "nuleiv-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/jcchen/Downloads/Nuleivpower-NEW.com/.claude/serve.py"],
+      "port": 4178
+    }
+  ]
+}
