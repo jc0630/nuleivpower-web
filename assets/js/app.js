@@ -199,11 +199,15 @@
     });
   });
 
-  /* deep-link to a tab via #hash */
-  if (location.hash) {
+  /* deep-link to a tab via #hash（主選單的 faq.html#green 之類）
+     也聽 hashchange：已經在同一頁時點選單不會重載，只有 hash 會變。 */
+  function tabFromHash() {
+    if (!location.hash) return;
     var hb = document.querySelector('.tab[data-target="' + location.hash.slice(1) + '"]');
-    if (hb) setTimeout(function () { hb.click(); }, 60);
+    if (hb && !hb.classList.contains('is-active')) hb.click();
   }
+  setTimeout(tabFromHash, 60);
+  window.addEventListener('hashchange', tabFromHash);
 
   /* ---------- 10. Hero parallax on generated art ---------- */
   if (!reduced) {
@@ -307,6 +311,168 @@
       clearTimeout(t); t = setTimeout(sync, 150);
     });
   })();
+
+  /* ---------- 10e. 捲動堆疊卡 .deck ----------
+     卡片用 position:sticky 依序吸附疊起。這裡只負責標記「目前這張」與
+     「已被疊在底下的」，並同步左欄的進度計數與刻度。 */
+  $$('[data-deck]').forEach(function (deck) {
+    var cards = $$('.deck__card', deck);
+    var bars = $$('[data-deck-bars] i', deck);
+    var num = $('[data-deck-n]', deck);
+    if (cards.length < 2) return;
+
+    var active = -1;
+    function sync() {
+      // 吸附線往下抓一點，卡片真正貼齊後才算「目前這張」
+      var line = (parseFloat(getComputedStyle(document.documentElement)
+        .getPropertyValue('--header-h')) || 84) + 90;
+      var i = 0;
+      cards.forEach(function (c, n) {
+        if (c.getBoundingClientRect().top <= line) i = n;
+      });
+      if (i === active) return;
+      active = i;
+      cards.forEach(function (c, n) {
+        c.classList.toggle('is-on', n === i);
+        c.classList.toggle('is-under', n < i);
+      });
+      bars.forEach(function (b, n) { b.classList.toggle('is-on', n <= i); });
+      if (num) num.textContent = ('0' + (i + 1)).slice(-2);
+    }
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+  });
+
+  /* ---------- 10f. 年份軌道 .era ----------
+     水平時間軸：進度線延伸到選取的年份，面板切換帶淡入。
+     進度線寬度直接量節點的實際位置，所以不受欄寬或換行影響。 */
+  $$('[data-era]').forEach(function (era) {
+    var pts = $$('.era__pt', era);
+    var cards = $$('.era__card', era);
+    var fill = $('[data-era-fill]', era);
+    if (pts.length < 2 || pts.length !== cards.length) return;
+
+    var cur = 0;
+    function go(n, focus) {
+      cur = (n + pts.length) % pts.length;
+      pts.forEach(function (p, k) {
+        p.setAttribute('aria-selected', k === cur ? 'true' : 'false');
+        p.setAttribute('tabindex', k === cur ? '0' : '-1');
+        p.classList.toggle('is-past', k < cur);
+      });
+      cards.forEach(function (c, k) { c.hidden = k !== cur; });
+      if (fill) {
+        var b = pts[cur];
+        fill.style.width = (b.offsetLeft + b.offsetWidth / 2) + 'px';
+      }
+      if (focus) pts[cur].focus();
+    }
+
+    pts.forEach(function (p, n) {
+      p.addEventListener('click', function () { go(n); });
+    });
+    era.addEventListener('keydown', function (e) {
+      if (!e.target.classList.contains('era__pt')) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1, true); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); go(cur - 1, true); }
+      if (e.key === 'Home')       { e.preventDefault(); go(0, true); }
+      if (e.key === 'End')        { e.preventDefault(); go(pts.length - 1, true); }
+    });
+    window.addEventListener('resize', function () { go(cur); });
+
+    // 狀態先補齊，進度線一定是對的
+    go(0);
+    // 捲到這裡時讓進度線重新長一次；IO 不可用也只是少掉這段動畫
+    if (!reduced && fill && 'IntersectionObserver' in window) {
+      var played = false;
+      var eio = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (!en.isIntersecting || played) return;
+          played = true;
+          eio.disconnect();
+          fill.style.transition = 'none';
+          fill.style.width = '0px';
+          requestAnimationFrame(function () {
+            fill.style.transition = '';
+            go(cur);
+          });
+        });
+      }, { threshold: 0.2 });
+      eio.observe(era);
+    }
+  });
+
+  /* ---------- 10g. 引言掃讀 [data-scan] ----------
+     把文字切成單字節點，捲動時由暗轉亮逐段點亮。
+     <em> 之類的行內元素整塊當一個單位，才不會破壞它身上的漸層文字。 */
+  $$('[data-scan]').forEach(function (el) {
+    var units = [];
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.nodeValue.split('').forEach(function (ch) {
+            if (!ch.trim() && ch !== ' ') { frag.appendChild(document.createTextNode(ch)); return; }
+            var s = document.createElement('span');
+            s.className = 'sc';
+            s.textContent = ch;
+            frag.appendChild(s);
+            units.push(s);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1) {
+          if (n.tagName === 'BR') return;
+          // 行內強調整塊點亮，保留原本的漸層文字效果
+          n.classList.add('sc');
+          units.push(n);
+        }
+      });
+    })(el);
+    if (!units.length) return;
+
+    if (reduced) {
+      units.forEach(function (u) { u.classList.add('is-on'); });
+      return;
+    }
+    var lit = 0;
+    function scan() {
+      var r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      var start = window.innerHeight * 0.84;
+      var end = window.innerHeight * 0.34;
+      var p = (start - r.top) / (start - end);
+      p = p < 0 ? 0 : (p > 1 ? 1 : p);
+      var n = Math.round(p * units.length);
+      if (n === lit) return;
+      for (var i = Math.min(lit, n); i < Math.max(lit, n); i++) {
+        units[i].classList.toggle('is-on', i < n);
+      }
+      lit = n;
+    }
+    scan();
+    window.addEventListener('scroll', scan, { passive: true });
+    window.addEventListener('resize', scan);
+  });
+
+  /* ---------- 10h. 展開式理由列 .why ---------- */
+  $$('[data-why]').forEach(function (list) {
+    var items = $$('.why__item', list);
+    items.forEach(function (item) {
+      var head = $('.why__head', item);
+      if (!head) return;
+      head.addEventListener('click', function () {
+        var open = item.classList.contains('is-open');
+        items.forEach(function (i) {
+          i.classList.remove('is-open');
+          var h = $('.why__head', i);
+          if (h) h.setAttribute('aria-expanded', 'false');
+        });
+        item.classList.toggle('is-open', !open);
+        head.setAttribute('aria-expanded', String(!open));
+      });
+    });
+  });
 
   /* ---------- 11. Forms (demo only — no backend) ---------- */
   $$('form[data-demo]').forEach(function (form) {

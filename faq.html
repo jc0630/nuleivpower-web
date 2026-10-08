@@ -15,199 +15,183 @@
 
 <main>
 
-  <!-- ══════════ HERO ─ 滿版動態 banner ══════════ -->
-  <section class="stage stage--short">
+  <!-- ══════════ HERO ─ 置中標題 ══════════ -->
+  <section class="stage stage--short faq-hero">
     <div class="stage__art"><img class="photo photo--para" src="assets/img/photo/city-tower.jpg" alt="仰望綠樹與成群的玻璃帷幕商辦大樓" data-parallax="0.08"></div>
-    <div class="stage__scrim stage__scrim--left"></div>
-    <div class="stage__inner" style="padding-block:calc(var(--header-h) + 64px) 64px">
+    <div class="stage__scrim stage__scrim--full"></div>
+    <div class="stage__inner" style="padding-block:calc(var(--header-h) + 56px) 56px">
       <div class="wrap">
         <nav class="crumb" data-reveal="fade" style="margin-bottom:20px">
           <a href="index.html">首頁</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
           <span aria-current="page">Q&amp;A</span>
         </nav>
         <span class="eyebrow eyebrow--light" data-reveal="fade">Frequently Asked Questions</span>
-        <h1 class="d0" data-reveal data-delay="80" style="color:#fff;margin-top:16px;font-size:clamp(44px,7vw,104px)">常見問題</h1>
-        <p class="lead" data-reveal data-delay="170" style="max-width:42ch;margin-top:18px">
+        <h1 class="d0" data-reveal data-delay="80" style="color:#fff;margin-top:14px;font-size:clamp(40px,6vw,88px)">常見問題</h1>
+        <p class="lead" data-reveal data-delay="170" style="max-width:44ch;margin-top:16px">
           把客戶最常問、也最該先問清楚的問題整理在這裡。
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section">
-    <div class="wrap" id="faq-scope">
-      <div class="split split--5-7" style="align-items:start;gap:clamp(32px,4vw,72px)">
+  <!-- ============ 分類列 + 問答 ============ -->
+  <div id="faq-scope">
 
-        <!-- 側欄 -->
-        <div data-reveal="left" style="position:sticky;top:calc(var(--header-h) + 36px)">
-          <span class="eyebrow">Q&amp;A</span>
-          <h2 class="d2" style="margin-top:16px">想先知道<br>什麼？</h2>
-          <p class="lead" style="margin-top:20px">選擇分類查看對應的問題，或直接聯絡我們取得針對您場域的回答。</p>
-
-          <div class="tabs" data-tabs="#faq-scope" style="flex-direction:column;align-items:flex-start;margin-top:30px">
-            <button class="tab is-active" data-target="green" type="button">綠能相關</button>
-            <button class="tab" data-target="service" type="button">服務相關</button>
-          </div>
-
-          <div style="margin-top:12px;padding-top:26px;border-top:1px solid var(--line)">
-            <h3 class="ledger__t" style="font-size:19px;margin-bottom:10px">沒找到您的問題？</h3>
-            <p class="small">描述您的場域條件與目標，我們會在一週內給您具體的回覆。</p>
-            <a class="btn btn--primary btn--sm" href="contact.html" style="margin-top:18px">聯絡我們
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </div>
-
-        <!-- 內容 -->
-        <div data-reveal="right">
-
-          <!-- ───── 綠能相關 ───── -->
-          <div class="tabpane" data-pane="green" id="green">
-            <h3 class="h2" style="margin-bottom:8px">綠能相關</h3>
-            <p class="body" style="margin-bottom:26px">關於太陽能光電、儲能系統、綠電交易與碳管理的基本問題。</p>
-
-            <div class="acc" data-single>
-              <div class="acc__item is-open">
-                <button class="acc__q" type="button" aria-expanded="true">設置太陽能光電需要多少空間？大概能發多少電？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>一般而言，每 1 kWp 的裝置容量約需要 6～10 平方公尺（約 2～3 坪）的可用面積，實際需求視模組效率、安裝角度與排列間距而定。以台灣的平均日照條件估算，每 1 kWp 一年約可發電 1,100～1,350 度，中南部通常優於北部。</p>
-                  <p>不過面積只是其中一個條件。屋頂的結構承載、既有設備的遮蔽、防水層的狀況，以及該饋線的併聯容量，都可能成為真正的限制。建議以實際場勘結果為準。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">太陽能板的壽命有多長？效率會衰退嗎？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>目前主流模組的設計壽命為 25 年以上，多數廠商提供 25 年的功率輸出保固。模組會逐年衰減，第一年約衰減 1～2%，之後每年約 0.4～0.55%，25 年後通常仍保有初始功率的 80% 以上。</p>
-                  <p>逆變器的壽命較短，一般約 10～15 年，通常需要在系統生命週期中更換一次。這筆費用在評估投資報酬時就應該先納入試算，而不是等到第十二年才發現。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">颱風或地震會不會把光電系統吹壞？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>台灣的光電系統結構設計須依建築技術規則與相關規範，考慮當地的基本設計風速與地震力。我們的結構設計由技師簽證，並依實際場址條件（高度、地況、周邊遮蔽）逐案計算，而不是套用通用圖。</p>
-                  <p>多數災損案例的原因不是模組本身，而是支架錨定方式不當或施工品質不良。這也是我們堅持隱蔽工程於封板前留存影像紀錄的原因。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">什麼是儲能系統？企業為什麼需要？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>儲能系統（BESS）可以在電價低或綠電過剩時充電，在尖峰時段放電。對企業而言主要有三種價值：降低契約容量與基本電費、參與台電電力交易平台的輔助服務獲取收益，以及在停電時維持關鍵設備供電。</p>
-                  <p>是否值得投資，取決於您的負載曲線形狀、契約容量使用率與饋線可用容量。負載平穩的廠區，削峰效益可能有限；但如果同時能參與輔助服務市場，整體報酬會明顯改善。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">綠電、再生能源憑證（T-REC）與碳權有什麼不同？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p><b>綠電</b>是實際的電力，透過直供或轉供輸送到您的廠區。<b>T-REC</b> 是證明「這度電來自再生能源」的憑證，一張憑證代表 1,000 度綠電，用於 RE100 等自願性目標的認列。</p>
-                  <p><b>碳權</b>則是另一回事——它來自減量專案所產生的減碳額度，用於抵換難以消除的剩餘排放。三者不能互相取代：買碳權不能宣稱使用綠電，買綠電也不等於取得碳權。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">RE100 是什麼？企業一定要加入嗎？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>RE100 是一項全球性的自願倡議，成員承諾在特定年限前達成 100% 使用再生能源。加入與否並非法規強制，但許多國際品牌客戶會透過供應鏈要求，間接使供應商必須提出對應的綠電使用計畫。</p>
-                  <p>即使不加入 RE100，台灣的用電大戶條款也已要求契約容量達一定規模的用電戶，必須設置一定比例的再生能源、儲能設備，或購買憑證、繳納代金。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">碳盤查、碳足跡與碳中和有什麼差別？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p><b>碳盤查</b>（ISO 14064-1）以「組織」為邊界，盤點整間公司一年的溫室氣體排放。<b>碳足跡</b>（ISO 14067）以「產品」為邊界，計算單一產品從原料到廢棄的全生命週期排放。</p>
-                  <p><b>碳中和</b>則是一個狀態：先盡可能減量，剩餘無法消除的排放再以碳權抵換至淨值為零。沒有先完成盤查，就無法主張碳中和——因為您不知道要抵換多少。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">什麼是虛擬電廠（VPP）？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>虛擬電廠是把分散在各處的小型發電設備、儲能系統與可調度負載，透過通訊與控制平台整合起來，對電網而言表現得像一座可被調度的發電廠。</p>
-                  <p>它的價值在於聚合：單一廠區的儲能可能太小，無法符合電力交易平台的投標門檻；但把數十個場址聚合起來，就能以合格交易者的身分參與市場，並把收益分配回各個參與者。</p>
-                </div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ───── 服務相關 ───── -->
-          <div class="tabpane" data-pane="service" id="service" hidden>
-            <h3 class="h2" style="margin-bottom:8px">服務相關</h3>
-            <p class="body" style="margin-bottom:26px">關於立德新能源的合作方式、流程、費用與售後服務。</p>
-
-            <div class="acc" data-single>
-              <div class="acc__item is-open">
-                <button class="acc__q" type="button" aria-expanded="true">評估與報價要收費嗎？需要準備什麼資料？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>初步評估與方案建議不收費。建議您準備：場域的位置與面積、屋頂或土地的使用權證明、建築結構圖（若有）、以及近一年的電費單或用電資料。</p>
-                  <p>資料越完整，我們給的評估就越接近實際。如果手邊資料不齊也沒關係，可以先從電費單開始——那通常就足以判斷值不值得繼續談。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">從簽約到併聯發電，大約需要多久？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>以屋頂型案場為例，一般約需 4～8 個月，其中行政申請（同意備案、台電併聯審查、設備登記）往往佔掉超過一半的時間。地面型案場因涉及土地變更與環境評估，期程會更長。</p>
-                  <p>我們會在簽約前就把各階段的預估期程與可能的卡關點說明清楚，並在過程中提供進度回報，而不是讓您自己猜現在進行到哪一步。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">可以只委託其中一項服務嗎？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>可以。五項服務可以單獨委託，也可以組合。常見的情況是：企業自己已經建好光電，只需要委託維運；或是沒有自建計畫，單純需要採購綠電與憑證。</p>
-                  <p>我們也接受承接他人建置的既有案場——接手前會先執行 IV 曲線與熱像基準量測，釐清現況，避免後續責任歸屬爭議。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">有哪些合作與投資模式可以選擇？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>常見有三種：<b>自建自有</b>（業主出資、自行持有資產與發電收益）、<b>屋頂租賃</b>（我們出資建置，支付屋頂租金，業主無須投入資本）、以及<b>合資共同開發</b>（雙方按比例出資與分潤）。</p>
-                  <p>選擇哪一種，取決於您的資金配置、會計處理需求與對長期收益的期待。我們會在方案階段提供三種模式的現金流比較，而不是只推薦對我們最有利的那一種。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">保固範圍包含哪些？售後怎麼處理？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>工程施工保固一般為 10 年，模組功率保固依原廠條件通常為 25 年，逆變器則視型號為 5～10 年並可延長。保固範圍與排除項目會在合約中逐項列明。</p>
-                  <p>售後服務由自有維運團隊處理：重大故障 24 小時內到場、一般異常 4 小時內回應。原廠保固的索賠程序也由我們代為處理，您不需要自己跟設備商交涉。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">維運服務的費用怎麼計算？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>通常以每年每瓩（kWp）計價，依案場規模、地理位置、設備型式與服務等級而有差異。規模越大、單位成本越低；偏遠或分散的小型案場則相對較高。</p>
-                  <p>我們的合約以系統可用率與 PR 值作為服務水準（SLA）承諾，未達標準有對應的補償機制——這與只承諾「每年巡檢幾次」的計價方式有本質上的不同。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">全台都有服務嗎？離島可以嗎？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>工程與維運服務涵蓋台灣本島各縣市。離島案場可以評估，但因運補與人員派遣成本較高，通常需要達到一定規模才具經濟效益，維運的服務水準條件也會另行約定。</p>
-                </div></div>
-              </div>
-
-              <div class="acc__item">
-                <button class="acc__q" type="button" aria-expanded="false">如何開始？第一步該做什麼？<span class="acc__ico"></span></button>
-                <div class="acc__a"><div>
-                  <p>最快的方式是透過<a href="contact.html" style="color:var(--t-700);font-weight:600">聯絡我們</a>頁面留下基本資訊與需求，我們會在一週內回覆並安排初步訪談。</p>
-                  <p>訪談通常 30～60 分鐘，目的是確認您的條件與目標是否匹配。如果我們判斷這個案子對您不划算，會直接說——這比做完三個月評估再告訴您好。</p>
-                </div></div>
-              </div>
-            </div>
-          </div>
-
+    <div class="faq-bar">
+      <div class="wrap faq-bar__in">
+        <div class="tabs" data-tabs="#faq-scope">
+          <button class="tab is-active" data-target="green" type="button">綠能相關</button>
+          <button class="tab" data-target="service" type="button">服務相關</button>
         </div>
       </div>
     </div>
-  </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div style="max-width:1000px;margin-inline:auto">
+
+        <div class="tabpane" data-pane="green" id="green">
+
+          <div class="acc acc--q" data-single>
+            <div class="acc__item is-open">
+              <button class="acc__q" type="button" aria-expanded="true">設置太陽能光電需要多少空間？大概能發多少電？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>一般而言，每 1 kWp 的裝置容量約需要 6～10 平方公尺（約 2～3 坪）的可用面積，實際需求視模組效率、安裝角度與排列間距而定。以台灣的平均日照條件估算，每 1 kWp 一年約可發電 1,100～1,350 度，中南部通常優於北部。</p>
+                <p>不過面積只是其中一個條件。屋頂的結構承載、既有設備的遮蔽、防水層的狀況，以及該饋線的併聯容量，都可能成為真正的限制。建議以實際場勘結果為準。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">太陽能板的壽命有多長？效率會衰退嗎？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>目前主流模組的設計壽命為 25 年以上，多數廠商提供 25 年的功率輸出保固。模組會逐年衰減，第一年約衰減 1～2%，之後每年約 0.4～0.55%，25 年後通常仍保有初始功率的 80% 以上。</p>
+                <p>逆變器的壽命較短，一般約 10～15 年，通常需要在系統生命週期中更換一次。這筆費用在評估投資報酬時就應該先納入試算，而不是等到第十二年才發現。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">颱風或地震會不會把光電系統吹壞？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>台灣的光電系統結構設計須依建築技術規則與相關規範，考慮當地的基本設計風速與地震力。我們的結構設計由技師簽證，並依實際場址條件（高度、地況、周邊遮蔽）逐案計算，而不是套用通用圖。</p>
+                <p>多數災損案例的原因不是模組本身，而是支架錨定方式不當或施工品質不良。這也是我們堅持隱蔽工程於封板前留存影像紀錄的原因。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">什麼是儲能系統？企業為什麼需要？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>儲能系統（BESS）可以在電價低或綠電過剩時充電，在尖峰時段放電。對企業而言主要有三種價值：降低契約容量與基本電費、參與台電電力交易平台的輔助服務獲取收益，以及在停電時維持關鍵設備供電。</p>
+                <p>是否值得投資，取決於您的負載曲線形狀、契約容量使用率與饋線可用容量。負載平穩的廠區，削峰效益可能有限；但如果同時能參與輔助服務市場，整體報酬會明顯改善。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">綠電、再生能源憑證（T-REC）與碳權有什麼不同？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p><b>綠電</b>是實際的電力，透過直供或轉供輸送到您的廠區。<b>T-REC</b> 是證明「這度電來自再生能源」的憑證，一張憑證代表 1,000 度綠電，用於 RE100 等自願性目標的認列。</p>
+                <p><b>碳權</b>則是另一回事——它來自減量專案所產生的減碳額度，用於抵換難以消除的剩餘排放。三者不能互相取代：買碳權不能宣稱使用綠電，買綠電也不等於取得碳權。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">RE100 是什麼？企業一定要加入嗎？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>RE100 是一項全球性的自願倡議，成員承諾在特定年限前達成 100% 使用再生能源。加入與否並非法規強制，但許多國際品牌客戶會透過供應鏈要求，間接使供應商必須提出對應的綠電使用計畫。</p>
+                <p>即使不加入 RE100，台灣的用電大戶條款也已要求契約容量達一定規模的用電戶，必須設置一定比例的再生能源、儲能設備，或購買憑證、繳納代金。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">碳盤查、碳足跡與碳中和有什麼差別？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p><b>碳盤查</b>（ISO 14064-1）以「組織」為邊界，盤點整間公司一年的溫室氣體排放。<b>碳足跡</b>（ISO 14067）以「產品」為邊界，計算單一產品從原料到廢棄的全生命週期排放。</p>
+                <p><b>碳中和</b>則是一個狀態：先盡可能減量，剩餘無法消除的排放再以碳權抵換至淨值為零。沒有先完成盤查，就無法主張碳中和——因為您不知道要抵換多少。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">什麼是虛擬電廠（VPP）？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>虛擬電廠是把分散在各處的小型發電設備、儲能系統與可調度負載，透過通訊與控制平台整合起來，對電網而言表現得像一座可被調度的發電廠。</p>
+                <p>它的價值在於聚合：單一廠區的儲能可能太小，無法符合電力交易平台的投標門檻；但把數十個場址聚合起來，就能以合格交易者的身分參與市場，並把收益分配回各個參與者。</p>
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ───── 服務相關 ───── -->
+        <div class="tabpane" data-pane="service" id="service" hidden>
+
+          <div class="acc acc--q" data-single>
+            <div class="acc__item is-open">
+              <button class="acc__q" type="button" aria-expanded="true">評估與報價要收費嗎？需要準備什麼資料？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>初步評估與方案建議不收費。建議您準備：場域的位置與面積、屋頂或土地的使用權證明、建築結構圖（若有）、以及近一年的電費單或用電資料。</p>
+                <p>資料越完整，我們給的評估就越接近實際。如果手邊資料不齊也沒關係，可以先從電費單開始——那通常就足以判斷值不值得繼續談。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">從簽約到併聯發電，大約需要多久？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>以屋頂型案場為例，一般約需 4～8 個月，其中行政申請（同意備案、台電併聯審查、設備登記）往往佔掉超過一半的時間。地面型案場因涉及土地變更與環境評估，期程會更長。</p>
+                <p>我們會在簽約前就把各階段的預估期程與可能的卡關點說明清楚，並在過程中提供進度回報，而不是讓您自己猜現在進行到哪一步。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">可以只委託其中一項服務嗎？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>可以。五項服務可以單獨委託，也可以組合。常見的情況是：企業自己已經建好光電，只需要委託維運；或是沒有自建計畫，單純需要採購綠電與憑證。</p>
+                <p>我們也接受承接他人建置的既有案場——接手前會先執行 IV 曲線與熱像基準量測，釐清現況，避免後續責任歸屬爭議。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">有哪些合作與投資模式可以選擇？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>常見有三種：<b>自建自有</b>（業主出資、自行持有資產與發電收益）、<b>屋頂租賃</b>（我們出資建置，支付屋頂租金，業主無須投入資本）、以及<b>合資共同開發</b>（雙方按比例出資與分潤）。</p>
+                <p>選擇哪一種，取決於您的資金配置、會計處理需求與對長期收益的期待。我們會在方案階段提供三種模式的現金流比較，而不是只推薦對我們最有利的那一種。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">保固範圍包含哪些？售後怎麼處理？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>工程施工保固一般為 10 年，模組功率保固依原廠條件通常為 25 年，逆變器則視型號為 5～10 年並可延長。保固範圍與排除項目會在合約中逐項列明。</p>
+                <p>售後服務由自有維運團隊處理：重大故障 24 小時內到場、一般異常 4 小時內回應。原廠保固的索賠程序也由我們代為處理，您不需要自己跟設備商交涉。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">維運服務的費用怎麼計算？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>通常以每年每瓩（kWp）計價，依案場規模、地理位置、設備型式與服務等級而有差異。規模越大、單位成本越低；偏遠或分散的小型案場則相對較高。</p>
+                <p>我們的合約以系統可用率與 PR 值作為服務水準（SLA）承諾，未達標準有對應的補償機制——這與只承諾「每年巡檢幾次」的計價方式有本質上的不同。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">全台都有服務嗎？離島可以嗎？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>工程與維運服務涵蓋台灣本島各縣市。離島案場可以評估，但因運補與人員派遣成本較高，通常需要達到一定規模才具經濟效益，維運的服務水準條件也會另行約定。</p>
+              </div></div>
+            </div>
+
+            <div class="acc__item">
+              <button class="acc__q" type="button" aria-expanded="false">如何開始？第一步該做什麼？<span class="acc__ico"></span></button>
+              <div class="acc__a"><div>
+                <p>最快的方式是透過<a href="contact.html" style="color:var(--t-700);font-weight:600">聯絡我們</a>頁面留下基本資訊與需求，我們會在一週內回覆並安排初步訪談。</p>
+                <p>訪談通常 30～60 分鐘，目的是確認您的條件與目標是否匹配。如果我們判斷這個案子對您不划算，會直接說——這比做完三個月評估再告訴您好。</p>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 
   <!-- ============ CTA ============ -->
   <section class="cta bleed">

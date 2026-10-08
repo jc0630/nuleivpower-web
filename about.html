@@ -70,40 +70,66 @@
     </div>
   </section>
 
-  <!-- ══════════ 亮點與進展 ─ 滿版黃昏 + 深色編號清單 ══════════ -->
-  <section class="stage">
-    <div class="stage__art"><img class="photo" src="assets/img/photo/wind-farm.jpg" alt="山稜線上成排運轉中的風力發電機" loading="lazy"></div>
-    <div class="stage__scrim stage__scrim--full"></div>
-    <div class="stage__inner" style="padding-block:clamp(72px,8vw,120px)">
+  <!-- ══════════ 亮點與進展 ─ 捲動堆疊卡 ══════════ -->
+  <section class="deck-sec">
+    <div class="deck-sec__bg">
+      <img class="photo" src="assets/img/photo/wind-farm.jpg" alt="山稜線上成排運轉中的風力發電機" loading="lazy">
+      <span class="deck-sec__scrim"></span>
+    </div>
+
+    <div class="deck-sec__inner section">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <div class="sec-head__text">
+        <div class="deck" data-deck>
+
+          <div class="deck__side" data-reveal="left">
             <span class="eyebrow eyebrow--light">Highlights</span>
-            <h2 class="d2" style="color:#fff">我們的亮點與進展</h2>
+            <h2 class="d2" style="color:#fff">我們的<br>亮點與進展</h2>
+            <p class="lead" style="max-width:30ch">三條同時推進的主線——資產、平台、市場，彼此互為支撐。</p>
+            <div class="deck__meter"><b data-deck-n>01</b><span>/ 03</span></div>
+            <div class="deck__bars" data-deck-bars aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
           </div>
-        </div>
-        <div class="ledger ledger--ink" data-stagger="90">
-          <div class="ledger__item">
-            <div class="ledger__k"><span class="ledger__n">01</span>
-              <h3 class="ledger__t" style="color:#fff">能源資產佈局</h3></div>
-            <p class="ledger__v">持續投資國內外潔淨能源項目。除持有太陽能及儲能案場以外，同步佈局循環經濟，讓資產配置在不同景氣循環中都有支撐。</p>
+
+          <div class="deck__cards">
+            <article class="deck__card is-on" style="--off:40px">
+              <span class="deck__n">01</span>
+              <h3 class="deck__t">能源資產佈局</h3>
+              <p class="deck__d">持續投資國內外潔淨能源項目。除持有太陽能及儲能案場以外，同步佈局循環經濟，讓資產配置在不同景氣循環中都有支撐。</p>
+              <div class="deck__tags">
+                <span class="deck__tag">太陽能案場</span>
+                <span class="deck__tag">儲能案場</span>
+                <span class="deck__tag">循環經濟</span>
+              </div>
+            </article>
+
+            <article class="deck__card" style="--off:58px">
+              <span class="deck__n">02</span>
+              <h3 class="deck__t">虛擬電廠與綠電平台</h3>
+              <p class="deck__d">整合旗下能源項目，發展虛擬電廠（VPP）及綠電交易平台，並提供全方位的能源解決方案，而非單一環節的代工。</p>
+              <div class="deck__tags">
+                <span class="deck__tag">VPP 調度</span>
+                <span class="deck__tag">綠電媒合</span>
+                <span class="deck__tag">全案整合</span>
+              </div>
+            </article>
+
+            <article class="deck__card" style="--off:76px">
+              <span class="deck__n">03</span>
+              <h3 class="deck__t">國際市場拓展</h3>
+              <p class="deck__d">積極拓展國際市場，啟動海外綠能投資與策略合作專案，把台灣累積的建置與維運經驗帶往更大的市場。</p>
+              <div class="deck__tags">
+                <span class="deck__tag">海外投資</span>
+                <span class="deck__tag">策略合作</span>
+                <span class="deck__tag">經驗輸出</span>
+              </div>
+            </article>
           </div>
-          <div class="ledger__item">
-            <div class="ledger__k"><span class="ledger__n">02</span>
-              <h3 class="ledger__t" style="color:#fff">虛擬電廠與綠電平台</h3></div>
-            <p class="ledger__v">整合旗下能源項目，發展虛擬電廠（VPP）及綠電交易平台，並提供全方位的能源解決方案，而非單一環節的代工。</p>
-          </div>
-          <div class="ledger__item">
-            <div class="ledger__k"><span class="ledger__n">03</span>
-              <h3 class="ledger__t" style="color:#fff">國際市場拓展</h3></div>
-            <p class="ledger__v">積極拓展國際市場，啟動海外綠能投資與策略合作專案，把台灣累積的建置與維運經驗帶往更大的市場。</p>
-          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ 發展里程碑 ─ 年份作為編號 ══════════ -->
+  <!-- ══════════ 發展里程碑 ─ 年份軌道 ══════════ -->
   <section class="section">
     <div class="wrap">
       <div class="sec-head">
@@ -113,28 +139,56 @@
           <p class="lead">從單一案場的建置商，走向同時握有開發、維運、調度與交易能力的能源營運者。</p>
         </div>
       </div>
-      <div class="ledger" data-stagger="80">
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">2021</span><h3 class="ledger__t">立德新能源成立</h3></div>
-          <p class="ledger__v">承接母公司立德電子的電源技術與製造能量，正式切入太陽能光電開發領域。</p>
+
+      <div class="era" data-era data-reveal="fade">
+        <div class="era__rail" role="tablist" aria-label="發展里程碑">
+          <span class="era__fill" data-era-fill aria-hidden="true"></span>
+          <button class="era__pt" type="button" role="tab" id="era-t1" aria-controls="era-p1" aria-selected="true">2021</button>
+          <button class="era__pt" type="button" role="tab" id="era-t2" aria-controls="era-p2" aria-selected="false" tabindex="-1">2023</button>
+          <button class="era__pt" type="button" role="tab" id="era-t3" aria-controls="era-p3" aria-selected="false" tabindex="-1">2024</button>
+          <button class="era__pt" type="button" role="tab" id="era-t4" aria-controls="era-p4" aria-selected="false" tabindex="-1">2025</button>
+          <button class="era__pt" type="button" role="tab" id="era-t5" aria-controls="era-p5" aria-selected="false" tabindex="-1">2027</button>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">2023</span><h3 class="ledger__t">累計開發容量突破 50MWp</h3></div>
-          <p class="ledger__v">屋頂型與地面型案場同步推進，建立標準化的場勘、設計與併聯流程。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">2024</span><h3 class="ledger__t">投入大型儲能系統</h3></div>
-          <p class="ledger__v">首座 MW 級儲能案場投入電力交易平台輔助服務市場，切入調頻備轉與即時備轉。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">2025</span><h3 class="ledger__t">綠電交易與 VPP 平台上線</h3></div>
-          <p class="ledger__v">取得售電業資格，整合自有與合作案場綠電，開始提供企業 CPPA 媒合服務。</p>
-        </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">2027</span><h3 class="ledger__t">目標完成 IPO 掛牌上市</h3></div>
-          <p class="ledger__v">以更透明的治理結構與資本市場資源，加速國內外潔淨能源與循環經濟布局。</p>
+
+        <div class="era__panels">
+          <div class="era__card" id="era-p1" role="tabpanel" aria-labelledby="era-t1">
+            <div><span class="era__y">2021</span><span class="era__tag">起點</span></div>
+            <div>
+              <h3 class="era__t">立德新能源成立</h3>
+              <p class="era__d">承接母公司立德電子的電源技術與製造能量，正式切入太陽能光電開發領域。</p>
+            </div>
+          </div>
+          <div class="era__card" id="era-p2" role="tabpanel" aria-labelledby="era-t2" hidden>
+            <div><span class="era__y">2023</span><span class="era__tag">規模化</span></div>
+            <div>
+              <h3 class="era__t">累計開發容量突破 50MWp</h3>
+              <p class="era__d">屋頂型與地面型案場同步推進，建立標準化的場勘、設計與併聯流程。</p>
+            </div>
+          </div>
+          <div class="era__card" id="era-p3" role="tabpanel" aria-labelledby="era-t3" hidden>
+            <div><span class="era__y">2024</span><span class="era__tag">跨入儲能</span></div>
+            <div>
+              <h3 class="era__t">投入大型儲能系統</h3>
+              <p class="era__d">首座 MW 級儲能案場投入電力交易平台輔助服務市場，切入調頻備轉與即時備轉。</p>
+            </div>
+          </div>
+          <div class="era__card" id="era-p4" role="tabpanel" aria-labelledby="era-t4" hidden>
+            <div><span class="era__y">2025</span><span class="era__tag">售電與調度</span></div>
+            <div>
+              <h3 class="era__t">綠電交易與 VPP 平台上線</h3>
+              <p class="era__d">取得售電業資格，整合自有與合作案場綠電，開始提供企業 CPPA 媒合服務。</p>
+            </div>
+          </div>
+          <div class="era__card" id="era-p5" role="tabpanel" aria-labelledby="era-t5" hidden>
+            <div><span class="era__y">2027</span><span class="era__tag">目標</span></div>
+            <div>
+              <h3 class="era__t">目標完成 IPO 掛牌上市</h3>
+              <p class="era__d">以更透明的治理結構與資本市場資源，加速國內外潔淨能源與循環經濟布局。</p>
+            </div>
+          </div>
         </div>
       </div>
+
       <p class="small" style="margin-top:26px;color:var(--muted-2)">※ 里程碑內容為示意，正式上線前請由立德新能源提供實際沿革替換。</p>
     </div>
   </section>
@@ -143,7 +197,7 @@
   <section class="section section--tint">
     <div class="wrap">
       <span class="eyebrow" data-reveal="fade">Our Philosophy</span>
-      <p class="pull" data-reveal data-delay="80" style="margin-top:24px;max-width:24ch;font-size:clamp(26px,3.6vw,54px)">
+      <p class="pull" data-scan style="margin-top:24px;max-width:24ch;font-size:clamp(26px,3.6vw,54px)">
         真正推動產業前進的，不只是策略與資源，而是一群<em>互相扶持、勇於挑戰的夥伴</em>。
       </p>
 
@@ -178,23 +232,64 @@
           <p class="lead">能源專案的風險大多不在簽約當下，而在之後的二十年。我們把自己放在同一條時間線上。</p>
         </div>
       </div>
-      <div class="ledger" data-stagger="80">
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">01</span><h3 class="ledger__t">製造業出身的工程紀律</h3></div>
-          <p class="ledger__v">母公司立德電子長年投入電源產品製造，對於料件可靠度、良率與失效分析的要求，被完整帶進光電與儲能系統的設計與驗收流程。</p>
+      <div class="why" data-why data-reveal="fade">
+
+        <div class="why__item is-open">
+          <button class="why__head" type="button" aria-expanded="true">
+            <span class="why__n">01</span>
+            <span class="why__t">製造業出身的工程紀律</span>
+            <span class="why__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <div class="why__panel"><div>
+            <div class="why__grid">
+              <p class="why__d">母公司立德電子長年投入電源產品製造，對於料件可靠度、良率與失效分析的要求，被完整帶進光電與儲能系統的設計與驗收流程。</p>
+              <figure class="why__fig"><img src="assets/img/photo/switchboard.jpg" alt="電氣技師以平板檢查配電盤迴路狀態" loading="lazy"></figure>
+            </div>
+          </div></div>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">02</span><h3 class="ledger__t">一站式，不用自己當總包</h3></div>
-          <p class="ledger__v">開發、工程、維運、調度到售電，由同一個團隊承擔。您不需要在五家廠商之間釐清責任歸屬，也不必擔心介面落在三不管地帶。</p>
+
+        <div class="why__item">
+          <button class="why__head" type="button" aria-expanded="false">
+            <span class="why__n">02</span>
+            <span class="why__t">一站式，不用自己當總包</span>
+            <span class="why__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <div class="why__panel"><div>
+            <div class="why__grid">
+              <p class="why__d">開發、工程、維運、調度到售電，由同一個團隊承擔。您不需要在五家廠商之間釐清責任歸屬，也不必擔心介面落在三不管地帶。</p>
+              <figure class="why__fig"><img src="assets/img/photo/planning.jpg" alt="兩位專業人員在桌面城市模型前討論規劃" loading="lazy"></figure>
+            </div>
+          </div></div>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">03</span><h3 class="ledger__t">自有資產，利益一致</h3></div>
-          <p class="ledger__v">我們自己也持有並營運案場。對於什麼設計會在第七年產生維修成本、什麼樣的監控資料真的有用，我們是用自己的帳本學到的。</p>
+
+        <div class="why__item">
+          <button class="why__head" type="button" aria-expanded="false">
+            <span class="why__n">03</span>
+            <span class="why__t">自有資產，利益一致</span>
+            <span class="why__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <div class="why__panel"><div>
+            <div class="why__grid">
+              <p class="why__d">我們自己也持有並營運案場。對於什麼設計會在第七年產生維修成本、什麼樣的監控資料真的有用，我們是用自己的帳本學到的。</p>
+              <figure class="why__fig"><img src="assets/img/photo/grid-tower.jpg" alt="戴安全帽的工程人員指向遠方的高壓輸電鐵塔" loading="lazy"></figure>
+            </div>
+          </div></div>
         </div>
-        <div class="ledger__item">
-          <div class="ledger__k"><span class="ledger__n">04</span><h3 class="ledger__t">把減碳做成可查證的數字</h3></div>
-          <p class="ledger__v">綠電、憑證、碳盤查與 ESG 報告書彼此對得上，才禁得起客戶稽核與供應鏈問卷。我們提供的是一整套可追溯的佐證，而不只是一張報價單。</p>
+
+        <div class="why__item">
+          <button class="why__head" type="button" aria-expanded="false">
+            <span class="why__n">04</span>
+            <span class="why__t">把減碳做成可查證的數字</span>
+            <span class="why__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <div class="why__panel"><div>
+            <div class="why__grid">
+              <p class="why__d">綠電、憑證、碳盤查與 ESG 報告書彼此對得上，才禁得起客戶稽核與供應鏈問卷。我們提供的是一整套可追溯的佐證，而不只是一張報價單。</p>
+              <figure class="why__fig"><img src="assets/img/photo/green-building.jpg" alt="大量植栽與自然採光的綠建築室內空間" loading="lazy"></figure>
+            </div>
+          </div></div>
         </div>
+
       </div>
     </div>
   </section>

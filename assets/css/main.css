@@ -1202,3 +1202,226 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 }
 /* 搭配 data-parallax 使用：預留位移空間，避免捲動時露出底邊 */
 .photo--para{height:120%;top:-10%}
+
+/* ==========================================================================
+   31 ─ 關於頁互動元件
+        .deck 捲動堆疊卡 ／ .era 年份軌道 ／ [data-scan] 引言掃讀 ／ .why 展開列
+        四者共用既有的髮絲線、Outfit 描邊數字與 Tiffany 漸層，只是各自給一種
+        不同的閱讀節奏，避免整頁都是同一個編號清單。
+   ========================================================================== */
+
+/* --- 31a 捲動堆疊卡 ------------------------------------------------------
+   .stage 有 overflow:hidden 會讓 position:sticky 失效，所以這裡自己鋪底圖。 */
+/* overflow:clip 才裁得住底圖：margin-bottom:-100svh 會讓 sticky 的下界多出一個
+   視窗高度，不裁的話照片會蓋到下一個區塊；用 hidden 會變成捲動容器，
+   卡片的 sticky 會失效。 */
+.deck-sec{position:relative;color:#fff;isolation:isolate;overflow:clip}
+/* 底圖固定成一個視窗高度再往回收，卡片就像疊在一張不動的照片上；
+   直接 inset:0 鋪滿整個高區塊會把橫幅照片放大數倍只取中間一條。 */
+.deck-sec__bg{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:0;overflow:hidden}
+.deck-sec__scrim{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,14,20,.72) 0%,rgba(2,14,20,.88) 46%,rgba(2,14,20,.94) 100%)}
+.deck-sec__inner{position:relative;z-index:2}
+.deck-sec .lead{color:rgba(255,255,255,.88)}
+
+.deck{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  column-gap:clamp(30px,5vw,96px)}
+.deck__side{position:sticky;top:calc(var(--header-h) + 60px);align-self:start}
+.deck__side>*+*{margin-top:18px}
+.deck__meter{display:flex;align-items:baseline;gap:12px;margin-top:clamp(26px,3vw,40px);
+  font-family:"Outfit",sans-serif;font-variant-numeric:tabular-nums}
+.deck__meter b{font-size:clamp(32px,3.6vw,52px);font-weight:700;letter-spacing:-.04em;
+  line-height:1;background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.deck__meter span{font-size:12.5px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.66)}
+.deck__bars{display:flex;gap:7px;margin-top:18px}
+.deck__bars i{height:2px;width:clamp(28px,3vw,46px);border-radius:2px;
+  background:rgba(255,255,255,.2);transition:background .55s var(--e)}
+.deck__bars i.is-on{background:var(--g-brand)}
+
+/* gap 就是「上一張卡被吸住」的捲動距離，不會留白 */
+.deck__cards{display:grid;gap:min(40vh,320px);padding-bottom:min(24vh,190px)}
+.deck__card{
+  position:sticky;top:calc(var(--header-h) + var(--off,40px));
+  padding:clamp(26px,3.2vw,46px);border-radius:var(--r-lg);overflow:hidden;
+  background:rgba(4,20,25,.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.2);
+  transition:transform .65s var(--e),opacity .65s var(--e),border-color .6s;
+}
+.deck__card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:var(--g-brand);transform:scaleX(0);transform-origin:left;
+  transition:transform 1s var(--e-out)}
+.deck__card.is-on{border-color:rgba(10,186,181,.42)}
+.deck__card.is-on::before{transform:scaleX(1)}
+.deck__card.is-under{transform:scale(.96);opacity:.62}
+.deck__n{display:block;font-family:"Outfit",sans-serif;font-size:clamp(44px,5.8vw,84px);
+  font-weight:700;line-height:.88;letter-spacing:-.05em;color:transparent;
+  -webkit-text-stroke:1.2px rgba(127,224,218,.5);transition:-webkit-text-stroke-color .6s}
+.deck__card.is-on .deck__n{-webkit-text-stroke-color:rgba(158,208,106,.8)}
+.deck__t{font-size:clamp(20px,2.2vw,31px);letter-spacing:-.02em;color:#fff;margin:clamp(16px,1.8vw,24px) 0 13px}
+.deck__d{font-size:15.5px;line-height:1.9;color:rgba(255,255,255,.88);margin:0}
+.deck__tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.deck__tag{padding:6px 13px;border-radius:var(--r-full);border:1px solid rgba(255,255,255,.32);
+  font-size:12.5px;color:rgba(255,255,255,.9)}
+
+/* --- 31b 年份軌道 -------------------------------------------------------- */
+.era{margin-top:clamp(30px,3.4vw,46px)}
+.era__rail{position:relative;display:grid;grid-auto-flow:column;
+  grid-auto-columns:minmax(0,1fr);padding-top:36px}
+.era__rail::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  border-radius:2px;background:var(--line)}
+.era__fill{position:absolute;left:0;top:0;height:2px;width:0;border-radius:2px;
+  background:var(--g-brand);transition:width .75s var(--e-out)}
+.era__pt{
+  position:relative;padding:0;border:0;background:none;cursor:pointer;text-align:center;
+  font-family:"Outfit",sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:700;
+  letter-spacing:.02em;color:var(--muted);transition:color .4s var(--e),transform .4s var(--e);
+}
+.era__pt::before{
+  content:"";position:absolute;left:50%;top:-35px;width:13px;height:13px;border-radius:50%;
+  transform:translate(-50%,-50%);background:#fff;border:2px solid var(--t-200);
+  transition:border-color .45s var(--e),background .45s var(--e),transform .45s var(--e);
+}
+.era__pt::after{
+  content:"";position:absolute;left:50%;top:-35px;width:13px;height:13px;border-radius:50%;
+  transform:translate(-50%,-50%) scale(.6);border:1px solid var(--t-400);opacity:0;
+  transition:transform .6s var(--e-out),opacity .6s var(--e-out);
+}
+.era__pt:hover{color:var(--t-700)}
+.era__pt:hover::before{border-color:var(--t-400)}
+.era__pt[aria-selected="true"]{color:var(--ink);transform:translateY(-2px)}
+.era__pt[aria-selected="true"]::before{background:var(--g-brand);border-color:transparent;
+  transform:translate(-50%,-50%) scale(1.15)}
+.era__pt[aria-selected="true"]::after{opacity:1;transform:translate(-50%,-50%) scale(2)}
+.era__pt.is-past{color:var(--t-700)}
+.era__pt.is-past::before{border-color:var(--t-500);background:var(--t-100)}
+
+.era__panels{margin-top:clamp(34px,3.8vw,56px);border-top:1px solid var(--line);
+  padding-top:clamp(28px,3.2vw,44px)}
+.era__card[hidden]{display:none}
+.era__card{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(18px,3vw,60px);align-items:start;animation:eraIn .65s var(--e-out) both}
+@keyframes eraIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.era__y{font-family:"Outfit",sans-serif;font-size:clamp(50px,7.4vw,112px);font-weight:700;
+  line-height:.86;letter-spacing:-.05em;font-variant-numeric:tabular-nums;
+  background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.era__tag{display:block;margin-top:14px;font-size:11.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--t-700)}
+.era__t{font-size:clamp(20px,2.2vw,30px);letter-spacing:-.02em;margin:0 0 14px}
+.era__d{font-size:16px;line-height:1.95;color:var(--ink-2,#2b3a40);margin:0;max-width:52ch}
+
+/* --- 31c 引言掃讀 -------------------------------------------------------- */
+[data-scan] .sc{opacity:.34;transition:opacity .65s var(--e)}
+[data-scan] .sc.is-on{opacity:1}
+
+/* --- 31d 展開式理由列 ---------------------------------------------------- */
+.why{--wn:clamp(40px,4.6vw,76px);--wg:clamp(16px,2.6vw,40px);border-top:1px solid var(--line)}
+.why__item{border-bottom:1px solid var(--line)}
+.why__head{
+  width:100%;display:grid;grid-template-columns:var(--wn) minmax(0,1fr) auto;align-items:center;
+  gap:var(--wg);padding:clamp(20px,2.4vw,32px) 2px;
+  background:none;border:0;cursor:pointer;text-align:left;font:inherit;color:var(--ink);
+  transition:padding-left .5s var(--e);
+}
+.why__head:hover,.why__item.is-open .why__head{padding-left:14px}
+.why__n{font-family:"Outfit",sans-serif;font-size:clamp(25px,3vw,46px);font-weight:700;
+  line-height:1;letter-spacing:-.045em;color:transparent;
+  -webkit-text-stroke:1.1px var(--t-300);transition:color .5s var(--e),-webkit-text-stroke-color .5s}
+.why__head:hover .why__n{-webkit-text-stroke-color:var(--t-500)}
+.why__item.is-open .why__n{color:var(--t-600);-webkit-text-stroke-color:transparent}
+.why__t{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:clamp(17px,1.8vw,26px);
+  font-weight:600;letter-spacing:-.02em;line-height:1.38;transition:color .35s}
+.why__head:hover .why__t,.why__item.is-open .why__t{color:var(--t-800)}
+.why__go{width:42px;height:42px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+  border:1px solid var(--line-brand);color:var(--t-600);
+  transition:transform .55s var(--e),background-color .45s,color .45s,border-color .45s}
+.why__go svg{width:16px;height:16px}
+.why__item.is-open .why__go{background:var(--g-brand);border-color:transparent;color:#fff;
+  transform:rotate(90deg)}
+.why__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--e)}
+.why__item.is-open .why__panel{grid-template-rows:1fr}
+.why__panel>div{overflow:hidden}
+.why__grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:clamp(22px,3.4vw,56px);align-items:center;
+  padding:2px 2px clamp(26px,3vw,40px) calc(var(--wn) + var(--wg) + 14px)}
+.why__d{font-size:16px;line-height:1.95;color:var(--ink-2,#2b3a40);margin:0}
+.why__fig{position:relative;margin:0;aspect-ratio:16/10;overflow:hidden;
+  border-radius:var(--r);background:var(--t-50);
+  opacity:0;transform:translateX(28px);
+  transition:opacity .75s var(--e-out) .1s,transform .75s var(--e-out) .1s}
+.why__item.is-open .why__fig{opacity:1;transform:none}
+.why__fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.05);transition:transform 1.4s var(--e-out)}
+.why__item.is-open .why__fig img{transform:none}
+
+/* --- 31e RWD ------------------------------------------------------------- */
+@media (max-width:980px){
+  .deck{grid-template-columns:minmax(0,1fr)}
+  .deck__side{position:static;margin-bottom:clamp(30px,4vw,44px)}
+  .deck__cards{gap:min(32vh,260px)}
+  .deck__card{--off:28px}
+  .era__card{grid-template-columns:minmax(0,1fr);gap:16px}
+  .why__grid{grid-template-columns:minmax(0,1fr);padding-left:2px}
+}
+@media (max-width:720px){
+  .era__rail{overflow-x:auto;grid-auto-columns:minmax(88px,1fr);scrollbar-width:none;
+    padding-bottom:4px}
+  .era__rail::-webkit-scrollbar{display:none}
+}
+@media (max-width:640px){
+  .deck__cards{gap:22px}
+  .deck__card{position:static;transform:none !important;opacity:1 !important}
+  .why__head{grid-template-columns:auto minmax(0,1fr);gap:14px}
+  .why__go{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .deck__card{position:static;transform:none !important;opacity:1 !important}
+  .deck__card::before,.era__fill{transition:none}
+  .era__card{animation:none}
+  [data-scan] .sc{opacity:1}
+}
+
+/* ==========================================================================
+   32 ─ Q&A 頁：置中標題 ／ 滿版分類列 ／ 寬版收合問答
+        只加 .faq-* 與 .acc--q，不影響其他頁沿用的 .acc／.tabs。
+   ========================================================================== */
+
+.faq-hero{align-items:center;text-align:center}
+.faq-hero .crumb{justify-content:center}
+.faq-hero .lead{margin-left:auto;margin-right:auto}
+
+.faq-bar{background:var(--t-50);border-bottom:1px solid var(--line)}
+.faq-bar__in{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:clamp(6px,1vw,16px);padding:13px 0}
+.faq-bar .tabs{margin:0;justify-content:center}
+.faq-bar .tab{background:none;border-color:transparent;box-shadow:none;
+  padding:12px clamp(20px,2.4vw,30px);font-size:clamp(14.5px,1.3vw,16px)}
+.faq-bar .tab:hover{transform:none;background:#fff;border-color:var(--line-brand)}
+.faq-bar .tab.is-active{background:var(--g-brand);border-color:transparent;color:#fff;
+  box-shadow:var(--sh-brand)}
+
+/* 寬版問答：圓鈕移到題目左側，展開內容收進淺色面板 */
+.acc--q{--qi:clamp(28px,2.6vw,34px);--qg:clamp(12px,1.4vw,18px);border-top:0}
+.acc--q .acc__item{border-bottom:1px solid var(--line);
+  transition:padding-bottom .45s var(--e)}
+.acc--q .acc__item.is-open{padding-bottom:clamp(18px,2vw,26px)}
+.acc--q .acc__q{justify-content:flex-start;gap:var(--qg);
+  padding:clamp(20px,2.2vw,26px) 2px;font-size:clamp(16px,1.5vw,19.5px)}
+.acc--q .acc__q:hover{padding-left:2px}
+.acc--q .acc__ico{order:-1;width:var(--qi);height:var(--qi)}
+.acc--q .acc__ico::before{width:12px}
+.acc--q .acc__ico::after{height:12px}
+/* 0fr 收合時整個面板被裁成 0，背景跟著消失；留白一律放在 p 上，
+   放在這層的 padding 收不乾淨。 */
+.acc--q .acc__a>div{background:var(--t-50);border-radius:var(--r);
+  margin-left:calc(var(--qi) + var(--qg))}
+.acc--q .acc__a p{padding:0 clamp(22px,3vw,40px);margin:0;
+  color:var(--ink-2);font-size:16px;line-height:1.95}
+.acc--q .acc__a p:first-child{padding-top:clamp(20px,2.4vw,30px)}
+.acc--q .acc__a p:last-child{padding-bottom:clamp(20px,2.4vw,30px)}
+.acc--q .acc__a p+p{margin-top:14px}
+
+@media (max-width:640px){
+  .acc--q .acc__a>div{margin-left:0}
+  .faq-bar__in{padding:9px 0}
+  .faq-bar .tab{padding:10px 18px}
+}
