@@ -8,6 +8,7 @@
 
   /* ---------- Site map ---------- */
   var NAV = [
+    { key: 'about', label: '關於立德新能源', href: 'about.html' },
     {
       key: 'services', label: '服務項目', href: 'services.html',
       children: [
@@ -18,7 +19,6 @@
         { key: 'service-trading',  label: '綠電交易服務', href: 'service-trading.html' }
       ]
     },
-    { key: 'about', label: '關於立德新能源', href: 'about.html' },
     {
       key: 'sustainability', label: '永續經營', href: 'sustainability.html',
       children: [
@@ -26,7 +26,6 @@
         { key: 'sustain-esg',    label: 'ESG',    href: 'sustain-esg.html' }
       ]
     },
-    { key: 'contact', label: '聯絡我們', href: 'contact.html' },
     {
       key: 'faq', label: 'Q&A', href: 'faq.html',
       children: [
@@ -34,8 +33,14 @@
         { key: 'faq-service', label: '服務相關', href: 'faq.html#service' }
       ]
     },
-    { key: 'news', label: '最新消息', href: 'news.html' }
+    { key: 'news', label: '最新消息', href: 'news.html' },
+    { key: 'contact', label: '聯絡我們', href: 'contact.html' }
   ];
+
+  function byKey(k) {
+    for (var i = 0; i < NAV.length; i++) { if (NAV[i].key === k) return NAV[i]; }
+    return null;
+  }
 
   /* ---------- Shared SVG ---------- */
   var ICON = {
@@ -44,20 +49,13 @@
     globe: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>'
   };
 
-  /* Simplified NULEIV mark: angular "4" glyph + gradient location pin */
-  function mark(id, light) {
-    var gid = 'pin-' + id;
-    return '<svg class="logo-mark" viewBox="0 0 104 112" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1">' +
-      '<stop offset="0" stop-color="#4FC3E8"/><stop offset="1" stop-color="#9ED06A"/></linearGradient></defs>' +
-      '<g fill="' + (light ? '#ffffff' : 'currentColor') + '">' +
-      '<path d="M46 2 H68 L24 52 H2 Z"/>' +
-      '<path d="M2 52 H66 V70 H2 Z"/>' +
-      '<path d="M34 52 H54 V84 L76 57 L90 69 L54 110 H34 Z"/>' +
-      '</g>' +
-      '<path d="M84 10a14 14 0 0 1 14 14c0 10-14 26-14 26S70 34 70 24a14 14 0 0 1 14-14z" fill="url(#' + gid + ')"/>' +
-      '</svg>';
-  }
+  /* 一律使用品牌原始檔，不要再用重繪的向量版本。
+     logo.png        → 原檔去背（淺色底用）
+     logo-white.png  → 原檔去背後字體反白、定位點保留原漸層（深色底用） */
+  var LOGO = {
+    dark:  'assets/img/logo.png',
+    light: 'assets/img/logo-white.png'
+  };
 
   var page = document.body.dataset.page || '';
   var sub = document.body.dataset.sub || '';
@@ -65,7 +63,8 @@
   /* ---------- Loader ---------- */
   var loader = document.createElement('div');
   loader.className = 'loader';
-  loader.innerHTML = mark('load') + '<div class="loader__bar"></div>';
+  loader.innerHTML = '<img class="loader__mark" src="' + LOGO.dark + '" alt="">' +
+                     '<div class="loader__bar"></div>';
   document.body.appendChild(loader);
 
   /* ---------- Scroll progress ---------- */
@@ -95,9 +94,8 @@
   header.innerHTML =
     '<div class="wrap site-header__bar">' +
       '<a class="brand" href="index.html" aria-label="立德新能源 NULEIV 首頁">' +
-        '<img class="brand__img" src="assets/img/logo.jpg" alt="立德新能源 NULEIV">' +
-        '<span class="brand__alt" aria-hidden="true">' + mark('hdr', true) +
-          '<b>NULEIV<span>立德新能源</span></b></span>' +
+        '<img class="brand__img" src="' + LOGO.dark + '" alt="立德新能源 NULEIV">' +
+        '<img class="brand__alt" src="' + LOGO.light + '" alt="" aria-hidden="true">' +
       '</a>' +
       '<nav class="nav" aria-label="主選單"><ul style="display:flex;align-items:center;gap:inherit">' +
         NAV.map(navItem).join('') +
@@ -143,8 +141,8 @@
     '<div class="wrap">' +
       '<div class="site-footer__grid">' +
         '<div>' +
-          '<div class="site-footer__brand">' + mark('foot', true) +
-            '<b>NULEIV<span>立德新能源</span></b></div>' +
+          '<div class="site-footer__brand">' +
+            '<img src="' + LOGO.light + '" alt="立德新能源 NULEIV"></div>' +
           '<p class="small" style="color:rgba(255,255,255,.6);max-width:34ch">' +
             '上市集團立德電子（3058）旗下成員。從太陽能光電建置、大型儲能系統到綠電媒合交易，' +
             '以一站式智慧能源整合服務，陪企業走完淨零這條路。</p>' +
@@ -155,7 +153,7 @@
           '</div>' +
         '</div>' +
         '<div><h4>服務項目</h4><nav class="site-footer__links">' +
-          NAV[0].children.map(function (c) { return '<a href="' + c.href + '">' + c.label + '</a>'; }).join('') +
+          byKey('services').children.map(function (c) { return '<a href="' + c.href + '">' + c.label + '</a>'; }).join('') +
         '</nav></div>' +
         '<div><h4>關於我們</h4><nav class="site-footer__links">' +
           '<a href="about.html">關於立德新能源</a><a href="sustainability.html">永續經營</a>' +
@@ -195,5 +193,5 @@
   }
 
   /* expose for app.js */
-  window.NULEIV = { NAV: NAV, mark: mark };
+  window.NULEIV = { NAV: NAV, LOGO: LOGO };
 })();

@@ -81,7 +81,7 @@ body{
 img,svg,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font:inherit;color:inherit}
-h1,h2,h3,h4,h5{margin:0;font-family:"Outfit","Noto Sans TC",sans-serif;font-weight:600;letter-spacing:-.015em;line-height:1.16}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:"Outfit","Noto Sans TC",sans-serif;font-weight:600;letter-spacing:-.015em;line-height:1.16}
 p{margin:0}
 ul,ol{margin:0;padding:0;list-style:none}
 ::selection{background:var(--t-200);color:var(--ink)}
@@ -93,12 +93,29 @@ ul,ol{margin:0;padding:0;list-style:none}
 ::-webkit-scrollbar-thumb{background:var(--t-300);border-radius:99px;border:3px solid var(--t-50)}
 ::-webkit-scrollbar-thumb:hover{background:var(--t-500)}
 
-/* ---------- 3. Type scale ---------- */
-.d1{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:clamp(42px,6.6vw,92px);line-height:1.04;font-weight:700;letter-spacing:-.03em}
-.d2{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:clamp(34px,4.6vw,66px);line-height:1.08;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
-.h1{font-size:clamp(30px,3.6vw,52px);line-height:1.14;text-wrap:balance}
-.h2{font-size:clamp(25px,2.6vw,38px);line-height:1.2}
-.h3{font-size:clamp(20px,1.7vw,25px);line-height:1.32}
+/* ---------- 3. Type scale ----------
+   標題層級改為單一等比級數（公比 1.32，約 Perfect Fourth）：
+     100 / 76 / 58 / 44 / 33 / 25px
+   以 H1 為基準下修（原本 140px 在 1440px 畫面上會吃掉將近半個視窗高），
+   其餘五級依同一公比重新對齊，級距一致、不再忽大忽小。
+   最小端（窄螢幕）收斂成公比 1.19，避免層級在手機上被拉開到無法閱讀。
+   語意對照：h1→.d0、h2→.d2／.h1、h3→.h2／.h3。 */
+:root{
+  --fs-d0:clamp(46px,6.9vw,100px);   /* 1 ─ 主視覺 h1 */
+  --fs-d1:clamp(40px,5.3vw,76px);    /* 2 ─ 特大標 */
+  --fs-d2:clamp(33px,4.1vw,58px);    /* 3 ─ 區塊 h2 */
+  --fs-h1:clamp(28px,3.1vw,44px);    /* 4 ─ 次級 h2 */
+  --fs-h2:clamp(24px,2.3vw,33px);    /* 5 ─ h3 */
+  --fs-h3:clamp(20px,1.7vw,25px);    /* 6 ─ 小標 h3／h4 */
+}
+.d1{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:var(--fs-d1);line-height:1.1;font-weight:700;letter-spacing:-.028em}
+.d2{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:var(--fs-d2);line-height:1.14;font-weight:600;letter-spacing:-.024em;text-wrap:balance}
+.h1{font-size:var(--fs-h1);line-height:1.2;text-wrap:balance}
+.h2{font-size:var(--fs-h2);line-height:1.26}
+.h3{font-size:var(--fs-h3);line-height:1.36}
+/* 沒有掛 class 的 h4–h6 原本直接吃 body 的 16px，與 .h3 之間是斷層 */
+h4{font-size:clamp(16.5px,1.35vw,19px);line-height:1.45}
+h5,h6{font-size:16px;line-height:1.55}
 .lead{font-size:clamp(17px,1.35vw,20px);line-height:1.85;color:var(--muted)}
 .body{font-size:16px;line-height:1.85;color:var(--muted)}
 .small{font-size:14px;line-height:1.7;color:var(--muted)}
@@ -184,8 +201,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 }
 .site-header.is-stuck .site-header__bar{height:68px}
 .brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;z-index:2}
-.brand__img{height:38px;width:auto;mix-blend-mode:multiply;transition:height .35s var(--e)}
-.site-header.is-stuck .brand__img{height:32px}
+.brand__img,.brand__alt{height:38px;width:auto;transition:height .35s var(--e)}
+.site-header.is-stuck .brand__img,.site-header.is-stuck .brand__alt{height:32px}
 
 /* Centered primary nav */
 .nav{
@@ -563,8 +580,8 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .prose{max-width:72ch}
 .prose>*+*{margin-top:26px}
 .prose p{font-size:17px;line-height:1.95;color:var(--ink-2)}
-.prose h2{font-size:clamp(23px,2.2vw,30px);margin-top:clamp(44px,4vw,64px)}
-.prose h3{font-size:clamp(19px,1.7vw,23px);margin-top:clamp(32px,3vw,44px)}
+.prose h2{font-size:clamp(22px,2vw,28px);margin-top:clamp(44px,4vw,64px)}
+.prose h3{font-size:clamp(18px,1.5vw,22px);margin-top:clamp(32px,3vw,44px)}
 .prose ul{display:grid;gap:12px}
 .prose ul li{position:relative;padding-left:24px;font-size:16.5px;line-height:1.9;color:var(--ink-2)}
 .prose ul li::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--g-pin)}
@@ -632,10 +649,8 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .site-footer__links{display:flex;flex-direction:column;gap:12px}
 .site-footer__links a{font-size:14.5px;color:rgba(255,255,255,.62);transition:color .25s,padding-left .25s var(--e)}
 .site-footer__links a:hover{color:#fff;padding-left:6px}
-.site-footer__brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-.site-footer__brand svg{width:34px;height:auto}
-.site-footer__brand b{font-family:"Outfit",sans-serif;font-size:21px;letter-spacing:.04em}
-.site-footer__brand b span{display:block;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--t-300);margin-top:2px}
+.site-footer__brand{display:flex;align-items:center;margin-bottom:18px}
+.site-footer__brand img{height:clamp(38px,3.4vw,46px);width:auto}
 .site-footer__bottom{position:relative;z-index:2;margin-top:clamp(44px,5vw,72px);padding-top:26px;border-top:1px solid rgba(255,255,255,.12);
   display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:rgba(255,255,255,.45)}
 .site-footer__bottom nav{display:flex;gap:22px;flex-wrap:wrap}
@@ -666,7 +681,6 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:15px}
 .kv dt{font-weight:600;color:var(--muted-2);white-space:nowrap}
 .kv dd{margin:0}
-.logo-mark{width:38px;height:auto;flex:0 0 auto}
 
 /* ---------- 26. Reveal animations ---------- */
 [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--e-out),transform .9s var(--e-out)}
@@ -680,7 +694,7 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
 /* ---------- 27. Page loader ---------- */
 .loader{position:fixed;inset:0;z-index:9990;background:#fff;display:grid;place-items:center;transition:opacity .7s var(--e),visibility .7s}
 .loader.is-done{opacity:0;visibility:hidden}
-.loader__mark{width:74px;animation:loadPop 1.5s var(--e-out) infinite}
+.loader__mark{width:min(188px,52vw);height:auto;animation:loadPop 1.5s var(--e-out) infinite}
 @keyframes loadPop{0%,100%{transform:translateY(0) scale(1);opacity:.9}50%{transform:translateY(-10px) scale(1.04);opacity:1}}
 .loader__bar{position:absolute;bottom:0;left:0;height:2px;background:var(--g-brand);width:0;animation:loadBar 1.1s var(--e) forwards}
 @keyframes loadBar{to{width:100%}}
@@ -702,12 +716,8 @@ body[data-header="over"] .site-header:not(.is-stuck) .lang{color:rgba(255,255,25
 body[data-header="over"] .site-header:not(.is-stuck) .lang:hover{background:rgba(255,255,255,.12);color:#fff}
 body[data-header="over"] .site-header:not(.is-stuck) .burger span{background:#fff}
 body[data-header="over"] .site-header:not(.is-stuck) .brand__img{display:none}
-body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
-.brand__alt{display:none;align-items:center;gap:11px;color:#fff}
-.brand__alt svg{width:30px;height:auto}
-.brand__alt b{font-family:"Outfit",sans-serif;font-size:19px;letter-spacing:.05em;line-height:1.05}
-.brand__alt b span{display:block;font-size:10px;font-weight:600;letter-spacing:.18em;
-  color:var(--t-300);margin-top:2px}
+body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:block}
+.brand__alt{display:none}
 
 /* scroll cue + eyebrow on dark stages */
 .stage .hero__scroll span{color:rgba(255,255,255,.5)}
@@ -715,8 +725,9 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 .stage .hero__scroll i::after{background:var(--t-300)}
 
 /* --- oversized display type --- */
-.d0{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:clamp(52px,9vw,140px);
-  line-height:.94;font-weight:700;letter-spacing:-.045em;text-wrap:balance}
+/* 行高原本 .94 是西文 display 的做法，中文字框是滿的，兩行會直接相撞 */
+.d0{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:var(--fs-d0);
+  line-height:1.06;font-weight:700;letter-spacing:-.04em;text-wrap:balance}
 .outline-type{color:transparent;-webkit-text-stroke:1.2px currentColor}
 
 /* --- full-bleed stage: art fills the section, copy sits on top --- */
@@ -760,7 +771,7 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 .index__n{font-family:"Outfit",sans-serif;font-size:13px;font-weight:700;letter-spacing:.16em;
   color:rgba(127,224,218,.7);transition:color .4s}
 .index__row:hover .index__n{color:var(--leaf)}
-.index__t{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:clamp(21px,2.7vw,38px);
+.index__t{font-family:"Outfit","Noto Sans TC",sans-serif;font-size:clamp(21px,2.3vw,33px);
   font-weight:600;letter-spacing:-.025em;line-height:1.15}
 .index__d{font-size:14.5px;line-height:1.75;color:rgba(255,255,255,.58)}
 .index__go{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.26);
@@ -834,7 +845,7 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
   transition:color .3s;text-wrap:balance}
 .tile:hover .tile__t{color:var(--t-700)}
 .tile--lead .tile__media{aspect-ratio:16/9}
-.tile--lead .tile__t{font-size:clamp(24px,2.6vw,38px);line-height:1.25}
+.tile--lead .tile__t{font-size:clamp(23px,2.3vw,33px);line-height:1.3}
 
 /* --- chapter: full-viewport panel for the services walkthrough --- */
 .chapter{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
@@ -847,7 +858,7 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 .chapter__n{display:block;font-family:"Outfit",sans-serif;font-size:clamp(56px,10vw,150px);
   line-height:.8;font-weight:700;letter-spacing:-.05em;color:transparent;
   -webkit-text-stroke:1.2px rgba(127,224,218,.55);margin-bottom:18px}
-.chapter__t{font-size:clamp(30px,4.4vw,64px);letter-spacing:-.03em;line-height:1.05}
+.chapter__t{font-size:clamp(28px,3.8vw,54px);letter-spacing:-.028em;line-height:1.12}
 .chapter__d{font-size:clamp(15px,1.25vw,18px);line-height:1.9;color:rgba(255,255,255,.72);max-width:48ch}
 .chapter__tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chapter__tag{padding:6px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
@@ -1558,18 +1569,22 @@ body[data-header="over"].nav-open .site-header:not(.is-stuck) .burger span{backg
   /* 區塊間距：桌機的 148px 在手機會變成整屏空白 */
   :root{--sec:clamp(62px,13vw,148px)}
 
-  /* 中文字框比西文滿，桌機的 .94／1.04／1.08 行高在手機會讓兩行字直接黏在一起 */
-  .d0{font-size:clamp(40px,11vw,52px);line-height:1.12}
-  .d1{line-height:1.18}
-  .d2{line-height:1.24}
-  .h1{line-height:1.3}
+  /* 桌機 1.32 的級距在 390px 寬會讓 h1 一個人佔掉半屏，手機整條收成 ~1.18。
+     各級的 max 都等於桌機該級的 min，跨過 640px 時不會跳階。
+     行高同時放寬：中文字框比西文滿，級距縮小後更需要空間。 */
+  .d0{font-size:clamp(36px,10vw,46px);line-height:1.14}
+  .d1{font-size:clamp(29px,8.4vw,40px);line-height:1.18}
+  .d2{font-size:clamp(25px,7vw,33px);line-height:1.22}
+  .h1{font-size:clamp(22px,5.9vw,28px);line-height:1.28}
+  .h2{font-size:clamp(19px,5vw,24px);line-height:1.32}
+  .h3{font-size:clamp(17px,4.3vw,20px);line-height:1.4}
 
   /* 服務清單：序號改成跟標題切齊，不要浮在三行文字的正中間 */
   .index--plain .index__row{align-items:start}
   .index--plain .index__n{padding-top:7px}
   .site-header.is-stuck .site-header__bar{height:58px}
-  .brand__img{height:32px}
-  .site-header.is-stuck .brand__img{height:28px}
+  .brand__img,.brand__alt{height:32px}
+  .site-header.is-stuck .brand__img,.site-header.is-stuck .brand__alt{height:28px}
 
   /* 觸控目標至少 44px */
   .btn{padding:15px 26px;min-height:48px}
@@ -1597,8 +1612,6 @@ body[data-header="over"].nav-open .site-header:not(.is-stuck) .burger span{backg
 @media (max-width:420px){
   /* 最窄的裝置：左右留白再收一點，長標題才不會被迫斷在奇怪的位置 */
   :root{--gutter:18px}
-  .d1{font-size:clamp(32px,9.2vw,42px)}
-  .d2{font-size:clamp(27px,7.6vw,34px)}
   /* 按鈕排不下時整列排，避免第二顆被切掉一半 */
   .btn:not(.btn--sm){width:100%}
 }
