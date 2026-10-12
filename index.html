@@ -106,69 +106,79 @@
     </div>
   </section>
 
-  <!-- ══════════ 04 · 服務項目 ─ 滑過切換滿版背景 ══════════ -->
-  <section class="section index" data-index>
-    <div class="index__media">
-      <img class="photo" src="assets/img/photo/solar-engineer.jpg" alt="工程師在太陽能電廠以筆電檢查發電系統運作" loading="lazy" data-index-media="pv">
-      <img class="photo" src="assets/img/photo/switchboard.jpg" alt="電氣技師以平板檢查配電盤迴路狀態" loading="lazy" data-index-media="om">
-      <img class="photo" src="assets/img/photo/grid-tower.jpg" alt="戴安全帽的工程人員指向遠方的高壓輸電鐵塔" loading="lazy" data-index-media="regional">
-      <img class="photo" src="assets/img/photo/planning.jpg" alt="兩位專業人員在桌面城市模型前討論規劃" loading="lazy" data-index-media="data">
-      <img class="photo" src="assets/img/photo/city-tower.jpg" alt="仰望綠樹與成群的玻璃帷幕商辦大樓" loading="lazy" data-index-media="trading">
-    </div>
-    <div class="index__scrim"></div>
-
-    <div class="wrap index__list" style="position:relative;z-index:2">
+  <!-- ══════════ 04 · 服務項目 ─ 淺色清單 + 每列縮圖 ══════════ -->
+  <!-- 原本是滿版照片當背景、白字壓在上面：五張圖疊著看起來很花，字也不好讀。
+       改成淺色底、縮圖收進每一列，讓下一區的滿版儲能照片成為唯一的深色視覺重點。 -->
+  <section class="section section--tint index index--plain">
+    <div class="wrap">
       <div class="sec-head" data-reveal>
         <div class="sec-head__text">
-          <span class="eyebrow eyebrow--light">Our Services</span>
-          <h2 class="d2" style="color:#fff">五大服務，<br>串成一條完整的能源價值鏈</h2>
+          <span class="eyebrow">Our Services</span>
+          <h2 class="d2">五大服務，<br>串成一條完整的能源價值鏈</h2>
         </div>
-        <a class="link-arrow" href="services.html" style="color:var(--t-300)">查看完整服務項目
+        <a class="link-arrow" href="services.html">查看完整服務項目
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
 
-      <a class="index__row" data-index-item="pv" href="service-pv.html" data-reveal="fade">
-        <span class="index__n">01</span>
-        <h3 class="index__t">光電系統工程</h3>
-        <p class="index__d">屋頂、地面、水面與農畜共生案場的全案規劃。從場勘、結構設計到台電併聯掛表，單一窗口到底。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+      <div class="index__list">
+        <a class="index__row" href="service-pv.html" data-reveal="fade">
+          <span class="index__n">01</span>
+          <div class="index__main">
+            <h3 class="index__t">光電系統工程</h3>
+            <span class="index__d">屋頂、地面、水面與農畜共生案場的全案規劃。從場勘、結構設計到台電併聯掛表，單一窗口到底。</span>
+          </div>
+          <span class="index__thumb"><img class="photo" src="assets/img/photo/solar-engineer.jpg" alt="工程師在太陽能電廠以筆電檢查發電系統運作" loading="lazy"></span>
+          <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <a class="index__row" data-index-item="om" href="service-om.html" data-reveal="fade">
-        <span class="index__n">02</span>
-        <h3 class="index__t">光電案場維運</h3>
-        <p class="index__d">24/7 遠端監控、紅外線熱像與 IV 曲線檢測。以可用率與 PR 值為合約承諾，而不只是「定期巡檢」。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+        <a class="index__row" href="service-om.html" data-reveal="fade">
+          <span class="index__n">02</span>
+          <div class="index__main">
+            <h3 class="index__t">光電案場維運</h3>
+            <span class="index__d">24/7 遠端監控、紅外線熱像與 IV 曲線檢測。以可用率與 PR 值為合約承諾，而不只是「定期巡檢」。</span>
+          </div>
+          <span class="index__thumb"><img class="photo" src="assets/img/photo/switchboard.jpg" alt="電氣技師以平板檢查配電盤迴路狀態" loading="lazy"></span>
+          <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <a class="index__row" data-index-item="regional" href="service-regional.html" data-reveal="fade">
-        <span class="index__n">03</span>
-        <h3 class="index__t">區域能源整合</h3>
-        <p class="index__d">MW 級儲能系統、需量反應與虛擬電廠調度，為工業區與園區建構具韌性的區域能源骨幹。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+        <a class="index__row" href="service-regional.html" data-reveal="fade">
+          <span class="index__n">03</span>
+          <div class="index__main">
+            <h3 class="index__t">區域能源整合</h3>
+            <span class="index__d">MW 級儲能系統、需量反應與虛擬電廠調度，為工業區與園區建構具韌性的區域能源骨幹。</span>
+          </div>
+          <span class="index__thumb"><img class="photo" src="assets/img/photo/grid-tower.jpg" alt="戴安全帽的工程人員指向遠方的高壓輸電鐵塔" loading="lazy"></span>
+          <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <a class="index__row" data-index-item="data" href="service-data.html" data-reveal="fade">
-        <span class="index__n">04</span>
-        <h3 class="index__t">能源資訊服務</h3>
-        <p class="index__d">EMS、用電行為分析與需量預測。把分散在各處電錶裡的數字，變成一張能下決策的圖。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+        <a class="index__row" href="service-data.html" data-reveal="fade">
+          <span class="index__n">04</span>
+          <div class="index__main">
+            <h3 class="index__t">能源資訊服務</h3>
+            <span class="index__d">EMS、用電行為分析與需量預測。把分散在各處電錶裡的數字，變成一張能下決策的圖。</span>
+          </div>
+          <span class="index__thumb"><img class="photo" src="assets/img/photo/planning.jpg" alt="兩位專業人員在桌面城市模型前討論規劃" loading="lazy"></span>
+          <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <a class="index__row" data-index-item="trading" href="service-trading.html" data-reveal="fade">
-        <span class="index__n">05</span>
-        <h3 class="index__t">綠電交易服務</h3>
-        <p class="index__d">再生能源電力與憑證（T-REC）媒合，協助企業簽訂長期 CPPA，穩定取得符合 RE100 認列標準的綠電。</p>
-        <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
+        <a class="index__row" href="service-trading.html" data-reveal="fade">
+          <span class="index__n">05</span>
+          <div class="index__main">
+            <h3 class="index__t">綠電交易服務</h3>
+            <span class="index__d">再生能源電力與憑證（T-REC）媒合，協助企業簽訂長期 CPPA，穩定取得符合 RE100 認列標準的綠電。</span>
+          </div>
+          <span class="index__thumb"><img class="photo" src="assets/img/photo/city-tower.jpg" alt="仰望綠樹與成群的玻璃帷幕商辦大樓" loading="lazy"></span>
+          <span class="index__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- ══════════ 05 · 儲能規格 ─ 滿版 + 規格表 ══════════ -->
-  <section class="stage stage--mid">
-    <div class="stage__art"><img class="photo" src="assets/img/photo/switchboard.jpg" alt="電氣技師以平板檢查配電盤迴路狀態" loading="lazy"></div>
-    <div class="stage__scrim stage__scrim--left"></div>
+  <section class="stage stage--mid stage--bess">
+    <div class="stage__art"><img class="photo" src="assets/img/photo/grid-tower.jpg" alt="戴安全帽的工程人員指向遠方的高壓輸電鐵塔" loading="lazy"></div>
+    <div class="stage__scrim stage__scrim--bess"></div>
     <div class="stage__inner" style="padding-block:clamp(72px,8vw,120px)">
       <div class="wrap">
         <div class="spec">
@@ -187,7 +197,9 @@
             </div>
           </div>
 
-          <div class="spec__rows" data-reveal="right">
+          <!-- 規格表收進實色面板：原本直接壓在照片亮處，數字幾乎看不到。 -->
+          <div class="spec__card" data-reveal="right">
+          <div class="spec__rows">
             <div class="spec__row"><span class="spec__k">單站系統規模</span><span class="spec__v">2 – 20<small>MW</small></span></div>
             <div class="spec__row"><span class="spec__k">儲能電量</span><span class="spec__v">4 – 40<small>MWh</small></span></div>
             <div class="spec__row"><span class="spec__k">電池技術</span><span class="spec__v">LFP 磷酸鋰鐵</span></div>
@@ -195,6 +207,7 @@
             <div class="spec__row"><span class="spec__k">調頻反應時間</span><span class="spec__v">&lt; 0.5<small>sec</small></span></div>
             <div class="spec__row"><span class="spec__k">循環壽命</span><span class="spec__v">6,000+<small>cycles</small></span></div>
             <div class="spec__row"><span class="spec__k">系統可用率</span><span class="spec__v">≥ 98<small>%</small></span></div>
+          </div>
           </div>
         </div>
       </div>
@@ -250,14 +263,14 @@
           與 ESG 報告書編製輔導，讓減碳成果可被量化、可被第三方查證、也可被供應鏈接受。
         </p>
         <div class="ledger" style="padding-top:8px">
-          <a class="ledger__item" href="sustain-carbon.html" style="grid-template-columns:minmax(0,.34fr) minmax(0,1fr);padding-block:22px">
+          <a class="ledger__item" href="sustain-carbon.html" style="--lk:.34fr;padding-block:22px">
             <div class="ledger__k">
               <span class="ledger__n">01</span>
               <h3 class="ledger__t">碳盤查</h3>
             </div>
             <p class="ledger__v" style="font-size:15px">組織型與產品型碳足跡盤查、活動數據蒐集與第三方查證輔導。</p>
           </a>
-          <a class="ledger__item" href="sustain-esg.html" style="grid-template-columns:minmax(0,.34fr) minmax(0,1fr);padding-block:22px">
+          <a class="ledger__item" href="sustain-esg.html" style="--lk:.34fr;padding-block:22px">
             <div class="ledger__k">
               <span class="ledger__n">02</span>
               <h3 class="ledger__t">ESG</h3>

@@ -6,12 +6,7 @@
       "name": "nuleiv-site",
       "runtimeExecutable": "python3",
       "runtimeArgs": [
-        "-m",
-        "http.server",
-        "--bind",
-        "127.0.0.1",
-        "--directory",
-        "/Users/jcchen/Downloads/Nuleivpower-NEW.com"
+        "/Users/jcchen/Downloads/Nuleivpower-NEW.com/.claude/serve.py"
       ],
       "port": 4188
     }

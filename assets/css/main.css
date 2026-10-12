@@ -419,9 +419,9 @@ body.nav-open .mnav{opacity:1;visibility:visible;transform:none}
   transition:padding-left .4s var(--e);
 }
 .spec__row:hover{padding-left:12px}
-.spec__k{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);flex:0 0 auto}
+.spec__k{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);flex:0 0 auto}
 .spec__v{font-family:"Outfit",sans-serif;font-size:clamp(20px,2vw,30px);font-weight:600;letter-spacing:-.02em;text-align:right;color:#fff}
-.spec__v small{font-size:.5em;font-weight:500;opacity:.62;margin-left:6px;letter-spacing:.04em}
+.spec__v small{font-size:.5em;font-weight:500;opacity:.8;margin-left:6px;letter-spacing:.04em}
 /* light variant */
 .spec--light .spec__rows{border-color:var(--line)}
 .spec--light .spec__row{border-bottom-color:var(--line)}
@@ -721,10 +721,11 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 
 /* --- full-bleed stage: art fills the section, copy sits on top --- */
 .stage{position:relative;width:100%;overflow:hidden;color:#fff;isolation:isolate}
-.stage--tall{min-height:100svh;display:flex;align-items:center}
+/* safe center：內容比視窗高時（矮螢幕／橫向）不要往上溢出被 header 蓋掉 */
+.stage--tall{min-height:100svh;display:flex;align-items:center;align-items:safe center}
 .stage--tall .stage__inner{padding-block:calc(var(--header-h) + 48px) 96px}
-.stage--mid{min-height:min(84svh,760px);display:flex;align-items:center}
-.stage--short{min-height:min(58svh,520px);display:flex;align-items:flex-end}
+.stage--mid{min-height:min(84svh,760px);display:flex;align-items:center;align-items:safe center}
+.stage--short{min-height:min(58svh,520px);display:flex;align-items:flex-end;align-items:safe flex-end}
 .stage__art{position:absolute;inset:0;z-index:0}
 .stage__art .art{position:absolute;inset:0}
 .stage__scrim{position:absolute;inset:0;z-index:1}
@@ -733,7 +734,7 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 .stage__scrim--base{background:linear-gradient(180deg,rgba(2,14,20,.3) 0%,rgba(2,14,20,.08) 38%,rgba(2,14,20,.86) 100%)}
 .stage__scrim--full{background:linear-gradient(180deg,rgba(2,14,20,.62),rgba(2,14,20,.78))}
 .stage__inner{position:relative;z-index:2;width:100%}
-.stage .lead{color:rgba(255,255,255,.76)}
+.stage .lead{color:rgba(255,255,255,.86)}
 .stage__body{max-width:900px}
 .stage__body>*+*{margin-top:22px}
 
@@ -746,6 +747,8 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 .index__scrim{position:absolute;inset:0;z-index:1;
   background:linear-gradient(92deg,rgba(2,14,20,.95) 0%,rgba(2,14,20,.82) 48%,rgba(2,14,20,.56) 100%)}
 .index__list{position:relative;z-index:2}
+/* 深色底圖上的前言原本吃 .lead 的灰色，整段幾乎看不到 */
+.index .lead{color:rgba(255,255,255,.8)}
 .index__row{
   display:grid;grid-template-columns:62px minmax(0,1.05fr) minmax(0,1fr) 46px;
   gap:clamp(14px,2.4vw,38px);align-items:center;color:#fff;
@@ -767,7 +770,7 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 .index__row:hover .index__go{background:var(--g-brand);border-color:transparent;transform:rotate(-45deg)}
 
 /* --- figure row: big numbers on hairlines, no cards --- */
-.figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.figures{display:grid;grid-template-columns:repeat(var(--fig,4),minmax(0,1fr));border-top:1px solid var(--line)}
 .figure{padding:clamp(26px,3vw,46px) clamp(14px,1.8vw,28px) 0;border-left:1px solid var(--line)}
 .figure:first-child{border-left:0;padding-left:0}
 .figure__v{font-family:"Outfit",sans-serif;font-size:clamp(40px,5.4vw,82px);font-weight:700;
@@ -784,7 +787,7 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
 
 /* --- ledger: numbered typographic list, replaces the 2×2 card grid --- */
 .ledger{display:grid}
-.ledger__item{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);
+.ledger__item{display:grid;grid-template-columns:minmax(0,var(--lk,.42fr)) minmax(0,1fr);
   gap:clamp(14px,3vw,56px);padding:clamp(24px,3vw,44px) 0;border-top:1px solid var(--line);
   transition:border-color .4s}
 .ledger__item:last-child{border-bottom:1px solid var(--line)}
@@ -879,9 +882,13 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
   .figure:nth-child(n+3){border-top:1px solid var(--line);margin-top:8px}
   .figures--ink .figure:nth-child(n+3){border-top-color:rgba(255,255,255,.18)}
   .chapter__grid{grid-template-columns:minmax(0,1fr)}
-  .bleed-split{grid-template-columns:minmax(var(--gutter),1fr) minmax(0,calc(var(--wrap) - var(--gutter)*2)) minmax(var(--gutter),1fr)}
-  .bleed-split__media,.bleed-split--right .bleed-split__media{grid-column:1 / 3;grid-row:1;border-radius:0 var(--r-lg) var(--r-lg) 0}
-  .bleed-split__body,.bleed-split--right .bleed-split__body{grid-column:2 / 3;grid-row:1}
+  /* 原本圖與文字同為 grid-row:1，等於整段文字直接疊在照片上、又沒有遮罩，
+     手機上完全讀不到。改成上圖下文，圖片仍往版面外出血保留原本的語言。 */
+  .bleed-split{grid-template-columns:minmax(var(--gutter),1fr) minmax(0,calc(var(--wrap) - var(--gutter)*2)) minmax(var(--gutter),1fr);
+    row-gap:clamp(26px,4.5vw,44px)}
+  .bleed-split__media{grid-column:1 / 3;grid-row:1;aspect-ratio:4/3;border-radius:0 var(--r-lg) var(--r-lg) 0}
+  .bleed-split--right .bleed-split__media{grid-column:2 / 4;grid-row:1;aspect-ratio:4/3;border-radius:var(--r-lg) 0 0 var(--r-lg)}
+  .bleed-split__body,.bleed-split--right .bleed-split__body{grid-column:2 / 3;grid-row:2}
 }
 @media (max-width:640px){
   .index__row{grid-template-columns:40px minmax(0,1fr)}
@@ -1424,4 +1431,174 @@ body[data-header="over"] .site-header:not(.is-stuck) .brand__alt{display:flex}
   .acc--q .acc__a>div{margin-left:0}
   .faq-bar__in{padding:9px 0}
   .faq-bar .tab{padding:10px 18px}
+}
+
+/* ==========================================================================
+   33 ─ 首頁兩個衝突區塊的改版
+        34-1 服務清單改淺色（.index--plain）：原本五張底圖疊在一起太花、白字難讀
+        34-2 儲能區塊（.stage--bess）：規格表收進實色面板，不再直接壓在照片上
+   ========================================================================== */
+
+/* ---- 34-1 淺色服務清單 ---- */
+.index--plain{background:none;overflow:visible;isolation:auto;color:var(--ink)}
+.index--plain .index__list{position:relative;z-index:auto}
+.index--plain .index__row{
+  grid-template-columns:clamp(42px,4vw,62px) minmax(0,1fr) clamp(96px,10vw,132px) 46px;
+  gap:clamp(14px,2.2vw,34px);align-items:center;color:var(--ink);
+  padding:clamp(18px,2vw,26px) 0;border-top:1px solid var(--line);
+}
+.index--plain .index__row:last-child{border-bottom:1px solid var(--line)}
+.index--plain .index__row:hover{background:rgba(255,255,255,.55)}
+.index--plain .index__n{color:var(--t-700);font-size:13.5px}
+.index--plain .index__row:hover .index__n{color:var(--t-600)}
+.index--plain .index__main{display:block;min-width:0}
+.index--plain .index__t{font-size:clamp(20px,2.2vw,31px);color:var(--ink)}
+.index--plain .index__d{display:block;margin-top:9px;font-size:15px;line-height:1.8;
+  color:var(--ink-2,#2b3a40);max-width:58ch}
+.index--plain .index__go{border-color:var(--line-brand);color:var(--t-700)}
+.index--plain .index__row:hover .index__go{color:#fff}
+
+.index__thumb{position:relative;display:block;width:100%;aspect-ratio:4/3;
+  border-radius:var(--r);overflow:hidden;background:var(--t-100)}
+.index__thumb .photo{transform:scale(1.05);transition:transform .9s var(--e)}
+.index__row:hover .index__thumb .photo{transform:scale(1.14)}
+
+/* ---- 34-2 儲能區塊 ---- */
+/* 底圖只當氛圍，整片壓暗；字與數字一律坐在面板上，不靠漸層硬撐對比。 */
+.stage--bess .stage__art .photo{filter:saturate(.7) brightness(.8)}
+.stage__scrim--bess{background:
+  linear-gradient(97deg,rgba(2,14,20,.95) 0%,rgba(2,14,20,.9) 44%,rgba(2,14,20,.74) 74%,rgba(2,14,20,.66) 100%)}
+.spec__card{
+  background:rgba(3,19,25,.76);border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--r-lg);padding:clamp(18px,2.4vw,32px);
+  -webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%);
+}
+.spec__card .spec__rows{border-top:0}
+.spec__card .spec__row:first-child{padding-top:4px}
+.spec__card .spec__row:last-child{border-bottom:0;padding-bottom:4px}
+.spec__card .spec__row:hover{padding-left:8px}
+
+@media (max-width:980px){
+  /* 母規則 .index__row 的斷點選擇性比 .index--plain .index__row 低，必須自己再寫一份 */
+  .index--plain .index__row{
+    grid-template-columns:clamp(36px,6vw,48px) minmax(0,1fr) 46px;
+    row-gap:10px;align-items:center;
+  }
+  .index--plain .index__thumb{display:none}
+}
+@media (max-width:640px){
+  .index--plain .index__row{grid-template-columns:34px minmax(0,1fr);gap:14px}
+  .index--plain .index__go{display:none}
+  .index--plain .index__d{font-size:14.5px}
+  .index--plain .index__row:hover{padding-left:0;background:none}
+  .spec__card{padding:18px 16px}
+}
+
+/* ==========================================================================
+   34 ─ 手機版 RWD 總整理
+        桌機設計維持不變。這一段只處理手機上會「互相遮擋 / 被固定 header 蓋住 /
+        擠在一起點不到」的狀況。斷點：860（平板直式）→ 640（手機）→ 420（窄機）。
+   ========================================================================== */
+
+/* ---- 34-0 全域 ---------------------------------------------------------- */
+/* 固定 header 會蓋住錨點目標，所有有 id 的元素預留出標題列高度 */
+[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
+
+/* 手機選單打開時，header 必須退出「壓在深色主視覺上」的白色模式：
+   抽屜是白底，白色 logo 與白色漢堡線會整個消失，使用者找不到關閉鈕。 */
+body.nav-open .site-header{background:rgba(255,255,255,.96);
+  -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px)}
+body[data-header="over"].nav-open .site-header:not(.is-stuck) .brand__img{display:block}
+body[data-header="over"].nav-open .site-header:not(.is-stuck) .brand__alt{display:none}
+body[data-header="over"].nav-open .site-header:not(.is-stuck) .burger span{background:var(--ink)}
+
+/* 滿版區塊：內容比視窗高時，往上溢出的那一半會被 header 吃掉；
+   safe 會在放不下時退回靠上對齊，第一行就不會躲到 header 後面。 */
+.hero{align-items:center;align-items:safe center}
+.chapter{align-items:flex-end;align-items:safe flex-end}
+
+@media (max-width:860px){
+  /* 沒有自帶 padding 的滿版區塊（首頁主視覺）需要自己讓開 header */
+  .stage__inner{padding-block:calc(var(--header-h) + 26px) 44px}
+
+  /* 左／右側漸層在單欄版面失效：文字會橫跨到照片最亮的那一側。
+     手機一律改成整片由上而下壓暗，白字在任何照片上都讀得到。 */
+  .stage__scrim--left,.stage__scrim--right{
+    background:linear-gradient(180deg,rgba(2,14,20,.86) 0%,rgba(2,14,20,.74) 46%,rgba(2,14,20,.82) 100%)}
+  .chapter__scrim{
+    background:linear-gradient(180deg,rgba(2,14,20,.62) 0%,rgba(2,14,20,.55) 30%,rgba(2,14,20,.92) 100%)}
+
+  /* 規格表在手機會整片壓到照片上，數字看不清楚。
+     比照首頁儲能區塊，收進半透明深色面板。 */
+  .stage .spec__rows{
+    background:rgba(3,19,25,.74);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--r-lg);padding:4px clamp(16px,4vw,22px);border-top-width:1px;
+    -webkit-backdrop-filter:blur(12px) saturate(130%);backdrop-filter:blur(12px) saturate(130%)}
+  .stage .spec__rows .spec__row:last-child{border-bottom:0}
+  .stage .spec__card .spec__rows{background:none;border:0;padding:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+  /* 深色服務清單（永續頁）：橫向漸層在單欄版面右半邊幾乎沒壓到，
+     白字與說明文字會落在照片最亮處。手機改整片壓暗並提高文字對比。 */
+  .index__scrim{background:linear-gradient(180deg,rgba(2,14,20,.9) 0%,rgba(2,14,20,.84) 50%,rgba(2,14,20,.9) 100%)}
+  .index__d{color:rgba(255,255,255,.76)}
+  .index__n{color:rgba(127,224,218,.9)}
+
+  /* 文章目錄在單欄版面黏著只會一路蓋住內文 */
+  .toc{position:static;top:auto}
+
+  /* 服務頁章節原本每段佔滿一個視窗高，手機上內容塞不下就會往上溢出 */
+  .chapter{min-height:auto;padding-block:clamp(64px,13vw,104px)}
+  .chapter__inner{padding-block:0}
+  .chapter__grid{gap:clamp(18px,4vw,30px)}
+}
+
+@media (max-width:640px){
+  /* 手機 header 壓低一點，第一屏才不會只剩標題 */
+  :root{--header-h:62px}
+  /* 區塊間距：桌機的 148px 在手機會變成整屏空白 */
+  :root{--sec:clamp(62px,13vw,148px)}
+
+  /* 中文字框比西文滿，桌機的 .94／1.04／1.08 行高在手機會讓兩行字直接黏在一起 */
+  .d0{font-size:clamp(40px,11vw,52px);line-height:1.12}
+  .d1{line-height:1.18}
+  .d2{line-height:1.24}
+  .h1{line-height:1.3}
+
+  /* 服務清單：序號改成跟標題切齊，不要浮在三行文字的正中間 */
+  .index--plain .index__row{align-items:start}
+  .index--plain .index__n{padding-top:7px}
+  .site-header.is-stuck .site-header__bar{height:58px}
+  .brand__img{height:32px}
+  .site-header.is-stuck .brand__img{height:28px}
+
+  /* 觸控目標至少 44px */
+  .btn{padding:15px 26px;min-height:48px}
+  .btn--sm{padding:12px 20px;min-height:44px}
+  .tab{display:inline-flex;align-items:center;min-height:44px}
+  .mnav__sub a{padding-block:13px}
+  .acc__q{gap:14px;padding:22px 2px}
+
+  /* contact 圖片上的徽章，圖一變小就壓到主體 */
+  .frame__badge{left:14px;bottom:14px;padding:10px 14px;font-size:12.5px;gap:8px}
+
+  /* 定義清單硬擠兩欄會把值擠成一字一行 */
+  .kv{grid-template-columns:minmax(0,1fr);gap:0}
+  .kv dt{margin-top:14px}
+  .kv dt:first-of-type{margin-top:0}
+
+  /* 頁尾光暈純裝飾，不該吃掉連結的點擊 */
+  .site-footer__orb{pointer-events:none;width:130vw;max-width:none;top:-14%;right:-36%}
+
+  /* 跑馬燈兩側的漸隱遮罩在窄螢幕會吃掉太多字 */
+  .marquee{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+}
+
+@media (max-width:420px){
+  /* 最窄的裝置：左右留白再收一點，長標題才不會被迫斷在奇怪的位置 */
+  :root{--gutter:18px}
+  .d1{font-size:clamp(32px,9.2vw,42px)}
+  .d2{font-size:clamp(27px,7.6vw,34px)}
+  /* 按鈕排不下時整列排，避免第二顆被切掉一半 */
+  .btn:not(.btn--sm){width:100%}
 }
