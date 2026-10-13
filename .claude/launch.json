@@ -4,11 +4,12 @@
   "configurations": [
     {
       "name": "nuleiv-site",
-      "runtimeExecutable": "python3",
+      "runtimeExecutable": "node",
       "runtimeArgs": [
-        "/Users/jcchen/Downloads/Nuleivpower-NEW.com/.claude/serve.py"
+        "-e",
+        "const http=require('http'),fs=require('fs'),p=require('path');const R='/Users/jcchen/Downloads/Nuleivpower-NEW.com';const PORT=process.env.PORT||4200;const T={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.ico':'image/x-icon','.mp4':'video/mp4','.woff2':'font/woff2','.md':'text/plain; charset=utf-8'};http.createServer((q,s)=>{let f=decodeURIComponent(q.url.split('?')[0]);if(f.endsWith('/'))f+='index.html';const t=p.join(R,p.normalize(f).replace(/^([.][.][/\\\\])+/,''));fs.readFile(t,(e,d)=>{if(e){s.writeHead(404,{'Content-Type':'text/plain'});s.end('404 '+f);return}s.writeHead(200,{'Content-Type':T[p.extname(t).toLowerCase()]||'application/octet-stream','Cache-Control':'no-store'});s.end(d);});}).listen(PORT,'127.0.0.1',()=>console.log('serving '+R+' on http://127.0.0.1:'+PORT));"
       ],
-      "port": 4188
+      "port": 4200
     }
   ]
 }
