@@ -46,7 +46,8 @@
   var ICON = {
     caret: '<svg class="nav__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
     chev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
-    globe: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>'
+    globe: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>',
+    find: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>'
   };
 
   /* 一律使用品牌原始檔，不要再用重繪的向量版本。
@@ -101,6 +102,8 @@
         NAV.map(navItem).join('') +
       '</ul></nav>' +
       '<div class="site-header__actions">' +
+        '<button class="srch-btn" type="button" data-srch-open aria-label="搜尋網站">' +
+          ICON.find + '<span>搜尋</span><kbd>/</kbd></button>' +
         '<button class="lang" type="button" data-noop>' + ICON.globe + 'EN</button>' +
         '<a class="btn btn--primary btn--sm" href="contact.html" data-hide-sm>免費諮詢' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
@@ -115,6 +118,8 @@
   var mnav = document.createElement('div');
   mnav.className = 'mnav';
   mnav.innerHTML = '<div class="wrap" style="padding-inline:0">' +
+    '<button class="mnav__search" type="button" data-srch-open>' + ICON.find +
+      '搜尋服務、案場、常見問題…</button>' +
     NAV.map(function (item) {
       if (!item.children) {
         return '<div class="mnav__group"><a class="mnav__top" href="' + item.href + '">' + item.label + '</a></div>';

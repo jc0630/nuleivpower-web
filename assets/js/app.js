@@ -582,6 +582,57 @@
     } else { start(); }
   });
 
+  /* ---------- 12c. 案場紀錄影片 ----------
+     輪播本體沿用上面的 .gal 引擎，這裡只管影片：
+     切到哪一張就只播那一支，捲離畫面全部暫停。
+     影片檔還沒上架（404）時退回封面圖，並把播放鍵收掉，
+     所以在檔案放進 assets/video/ 之前，這一區會以靜態封面呈現。 */
+  $$('.gal--rec').forEach(function (gal) {
+    var slides = $$('.gal__slide', gal);
+
+    slides.forEach(function (slide) {
+      var v = $('video', slide);
+      var btn = $('[data-rec-play]', slide);
+      if (!v) return;
+
+      v.addEventListener('error', function () { slide.setAttribute('data-rec-broken', ''); }, true);
+      v.addEventListener('play',  function () { slide.setAttribute('data-rec-on', ''); });
+      v.addEventListener('pause', function () { slide.removeAttribute('data-rec-on'); });
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          if (v.paused) { v.play().catch(function () {}); } else { v.pause(); }
+        });
+      }
+    });
+
+    function only(on) {
+      slides.forEach(function (slide) {
+        var v = $('video', slide);
+        if (!v) return;
+        if (slide === on) {
+          if (v.preload === 'none') { v.preload = 'metadata'; v.load(); }
+        } else if (!v.paused) { v.pause(); v.currentTime = 0; }
+      });
+    }
+
+    /* .gal 引擎換頁時只改 data-on，這裡用它當訊號 */
+    new MutationObserver(function () {
+      only(slides.filter(function (s) { return s.hasAttribute('data-on'); })[0]);
+    }).observe(gal, { subtree: true, attributes: true, attributeFilter: ['data-on'] });
+
+    /* 引擎的 go(0) 在這支程式註冊 observer 之前就跑完了，第一張要自己補一次。
+       順便讓它先去抓影片：檔案不存在的話現在就會收起播放鍵，
+       而不是等使用者按下去才發現沒反應。 */
+    only(slides.filter(function (s) { return s.hasAttribute('data-on'); })[0] || slides[0]);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (!en.isIntersecting) only(null); });
+      }, { threshold: 0.15 }).observe(gal);
+    }
+  });
+
   /* ---------- 13. Close mobile nav on resize up ---------- */
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1040 && document.body.classList.contains('nav-open')) {
