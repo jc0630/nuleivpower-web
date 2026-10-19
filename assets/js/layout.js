@@ -154,7 +154,7 @@
           '<div class="social" style="margin-top:26px">' +
             '<a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 112.5 6 2.5 2.5 0 014.98 3.5zM3 8.98h4v12H3zM9.5 8.98h3.8v1.64h.06a4.17 4.17 0 013.75-2.06c4 0 4.74 2.64 4.74 6.07v6.35h-4v-5.63c0-1.34 0-3.07-1.87-3.07s-2.16 1.46-2.16 2.97v5.73h-4z"/></svg></a>' +
             '<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.54-1.5h1.66V3.63A22 22 0 0014.3 3.5c-2.4 0-4 1.46-4 4.14V9.9H7.6V13h2.7v8z"/></svg></a>' +
-            '<a href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></a>' +
+            '<a href="mailto:Nuleiv.Company@nuleivpower.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></a>' +
           '</div>' +
         '</div>' +
         '<div><h4>服務項目</h4><nav class="site-footer__links">' +
@@ -167,10 +167,10 @@
         '</nav></div>' +
         '<div><h4>聯絡資訊</h4><nav class="site-footer__links">' +
           '<a href="contact.html">聯絡我們</a><a href="faq.html">常見問題 Q&amp;A</a>' +
-          '<a href="mailto:service@nuleiv.com">service@nuleiv.com</a>' +
-          '<a href="tel:+886223456789">+886 2 2345 6789</a>' +
+          '<a href="mailto:Nuleiv.Company@nuleivpower.com">Nuleiv.Company@nuleivpower.com</a>' +
+          '<a href="tel:+886287861253">02-8786-1253</a>' +
           '<span class="small" style="color:rgba(255,255,255,.45);display:block;padding-top:6px;line-height:1.7">' +
-            '新北市新店區寶橋路 Ｘ 號 Ｘ 樓<br>週一至週五 09:00–18:00</span>' +
+            '台北市信義區松仁路 97 號 10 樓 A 室<br>週一至週五 09:00–18:00</span>' +
         '</nav></div>' +
       '</div>' +
       '<div class="site-footer__bottom">' +

@@ -165,8 +165,7 @@ HTML 裡的寫法：
 - `about.html` 的發展里程碑年份與事件
 - 各服務頁「規格」區塊的技術數值與保固條件
 - `news.html` 的所有新聞標題與日期、`news-detail.html` 全文
-- `contact.html` 的公司地址、電話、Email，以及 Google 地圖嵌入碼
-- 頁尾的地址與聯絡資訊
+- `contact.html` 的 Google 地圖嵌入碼
 
 另外需要工程端處理：
 
